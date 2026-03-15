@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dla Honora - RPG Quest Design Document</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <style>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Dla Honora - RPG Quest Design Document</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Lora:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
     :root {
       --bg: #0a0a0a;
       --text: #d4cbb3;
@@ -106,7 +106,7 @@
     }
 
     .toc::before, .toc::after {
-      content: '❖';
+      content: '&#10070;';
       position: absolute;
       color: var(--gold-dim);
       font-size: 20px;
@@ -238,400 +238,632 @@
       body { padding: 0; }
       .toplink { display: none; }
     }
-  </style>
+  
+
+    /* === Added for readability & consistency (2026-03-15) === */
+    :root { --purple: #7a4db8; --purple-dim: #4a2d73; --purple-ink: #efe6ff; }
+
+    .recruiter {
+      border: 2px solid rgba(122, 77, 184, 0.65) !important;
+      background: linear-gradient(180deg, rgba(122,77,184,.18) 0%, rgba(0,0,0,.35) 60%) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,.55);
+    }
+    .recruiter h2 { border-left: 6px solid var(--purple) !important; color: #dfcffd !important; }
+    .recruiter p { color: var(--purple-ink); }
+
+    .context-note {
+      border-top: 1px solid var(--border);
+      margin-top: 18px;
+      padding-top: 14px;
+      font-size: 0.95em;
+      font-style: italic;
+      color: rgba(212,203,179,.78);
+    }
+
+    .consequence-heading {
+      color: var(--gold);
+      text-align: center;
+      border: none;
+      margin: 34px 0 14px;
+      letter-spacing: 1px;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .dialogue-speaker { color: var(--speaker-color, var(--red)); }
+
+    .choice {
+      position: relative;
+      padding-left: 14px;
+    }
+    .choice::before {
+      content: 'WYB&Oacute;R';
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      font-family: 'Cinzel', serif;
+      font-size: .72em;
+      letter-spacing: 1px;
+      color: rgba(197,160,89,.95);
+    }
+
+    .branch-note {
+      background: rgba(122,77,184,.12);
+      border-left: 3px solid rgba(122,77,184,.9);
+      padding: 10px 14px;
+      margin: 12px 0;
+      color: rgba(239,230,255,.92);
+      font-style: italic;
+    }
+
+
+
+/* === Fixes for recruiter formatting, prologue readability and act III layout === */
+.recruiter p {
+  margin: 0 0 1.05em;
+  color: var(--purple-ink);
+}
+
+.emph-white {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.act3-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.act3-card {
+  border: 1px solid rgba(197,160,89,.4);
+  background: linear-gradient(180deg, rgba(197,160,89,.08) 0%, rgba(0,0,0,.25) 100%);
+  padding: 18px 18px 16px;
+  box-shadow: inset 0 0 18px rgba(0,0,0,.35);
+  min-height: 190px;
+}
+
+.act3-card h4 {
+  margin: 0 0 10px;
+  font-family: 'Cinzel', serif;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: .4px;
+  border-bottom: 1px solid rgba(197,160,89,.28);
+  padding-bottom: 8px;
+}
+
+.act3-card p {
+  margin: 0;
+}
+
+.consequence-intro {
+  margin-bottom: 1em;
+}
+
+.prolog-intro {
+  margin-bottom: 16px;
+}
+
+.interaction-card {
+  margin: 24px 0;
+  padding: 18px;
+  border: 1px solid rgba(197,160,89,.35);
+  background: rgba(8, 8, 8, .34);
+  box-shadow: inset 0 0 20px rgba(0,0,0,.35);
+}
+
+.interaction-title {
+  margin: 0 0 14px;
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 1.05rem;
+  letter-spacing: .6px;
+  border-bottom: 1px solid rgba(197,160,89,.25);
+  padding-bottom: 8px;
+}
+
+.interaction-card .script {
+  margin-top: 10px;
+}
+
+.interaction-card .dialogue,
+.interaction-card .stage {
+  margin: 10px 0;
+}
+
+.choice {
+  position: relative;
+  padding-left: 102px !important;
+  margin: 18px 0 22px !important;
+  min-height: 1.6em;
+}
+
+.choice::before {
+  left: 16px !important;
+  top: 0.18em !important;
+}
+
+.choice strong {
+  color: #fff;
+  display: block;
+  line-height: 1.55;
+}
+
+.choice-example {
+  margin-top: 8px !important;
+  margin-bottom: 26px !important;
+}
+
+.choice-continuation {
+  margin: 24px 0 10px !important;
+}
+
+@media (max-width: 820px) {
+  .act3-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .choice {
+    padding-left: 18px !important;
+    padding-top: 28px;
+  }
+
+  .choice::before {
+    left: 0 !important;
+    top: 0 !important;
+  }
+}
+</style>
+<meta name="clear_all" content="1">
 </head>
 <body>
-
-  <div class="recruiter" id="do-rekruterow">
-    <h2>Do rekruterów</h2>
-    <p>Szanowni Państwo,</p>
-<p>na Państwa ofertę natrafiłem na kilka godzin przed końcem naboru. Sfinalizowanie zadania rekrutacyjnego na satysfakcjonującym mnie poziomie nie jest możliwe. Niemniej, jestem bardzo zainteresowany ofertą i myślę, że posiadam umiejętności odpowiednie do wsparcia Waszego zespołu.</p>
-<p>Nie cieszy mnie oddanie pracy niekompletnej i nie prezentuje mnie z najlepszej strony, ale w zaistniałej sytuacji to najlepsze co mogę zrobić. Z Discorda dowiedziałem się, że wysyłają Państwo maile do aplikantów. Jeżeli moja praca/moja osoba spotka się z zainteresowaniem - proszę o wiadomość. Z największą przyjemnością prześlę wówczas stuprocentowo skończone zadanie jeszcze przed kolejnym etapem rekrutacji.</p>
-<p>Wobec powyższego - dla efektywności czasowej - prezentuję wersję zadania tak jakby była rozegrana w konkretnym wariancie. Zaznaczam gdzie wybór dialogowy byłby możliwy, ale prowadzę narrację wytyczoną ścieżką. Jeżeli faktycznie Państwo się ze mną skontaktują, oczywiście to rozbuduję.</p>
-<p>Miłej lektury!</p>
-  </div>
-
-  <header>
-    <h1 id="top">Dla Honora<br/><span class="subtitle">[For Honor]</span></h1>
-    <div class="separator">⚔ ✦ ⚔</div>
-  </header>
-
-  <nav class="toc" aria-label="Spis treści">
-    <h2>Spis Treści</h2>
-    <ul>
-      <li><a href="#kontekst">I. Kontekst</a></li><li><a href="#streszczenie-questa">II. Streszczenie Questa</a></li><li><a href="#streszczenie-akt-1">✦ Akt I: Honor</a></li><li><a href="#streszczenie-akt-2">✦ Akt II: Śledztwo</a></li><li><a href="#streszczenie-akt-3-1">✦ Akt III: Ścieżka 1</a></li><li><a href="#streszczenie-akt-3-2">✦ Akt III: Ścieżka 2</a></li><li><a href="#konsekwencje">III. Konsekwencje wyborów</a></li><li><a href="#scenariusz">SCENARIUSZ</a></li><li><a href="#prolog">1. Prolog</a></li><li><a href="#scenariusz-akt-1">2. Akt I</a></li><li><a href="#scenariusz-akt-2">3. Akt II</a></li>
-    </ul>
-  </nav>
-
-  <section id="kontekst">
-    <h2>Kontekst</h2>
-    <div class="panel">
-      <p>Miasto Velkar znajduje się w beznadziejnym położeniu. Plony nie wyrosną</p>
-<p>z wyjałowionej ziemi, a ryby wyławiane z rzek są małe jak szproty, a śmierdzące jak śledzie. Mieszkańcy to jednak znakomici rzemieślnicy. Handel z zagranicznymi kupcami powstrzymuje ekonomiczną upadłość. Zręczne ręce przynoszą tu większy prestiż niż władza polityczna.</p>
-<p>	Ile warta może być ciężka praca, kiedy nie jest ofiarowana bóstwom? Jedynym miejscem wartym oglądania jest tu klasztor zarządzany przez paladynów. Inaczej niż</p>
-<p>w innych rejonach świata są tutaj lepszymi mnichami niż wojownikami. Niemniej, stanowią jedyną zbrojną jednostkę miasta, co nakazuje się z nimi liczyć. Co by nie mówić są wzorem rycerskich cnót i bezgranicznego oddania. Mniej bóstwom niż charyzmatycznemu liderowi duchowemu. Módl się i pracuj - a przynajmniej jedno z nich, a na pewno nie nic innego. Tak można opisać tutejszy krajobraz. Inna dewiza: żadna praca nie hańbi. Czy to że burdelami zarządza świętobliwy zakon naprawdę stanowi jakikolwiek sekret? “Lepiej grzeszyć ciałem niż bezrobociem”.</p>
-<p>	Radykalizacja religijna rodzi polityczne niesnaski. Majątki przekazywane we władanie zakonu i hojne ofiary szkodzą opłacalności handlu, nie mówiąc już o spadku sprzedaży alkoholu i nękającej miasto fali kradzieży. Jeśli Velkar przestanie być atrakcyjne dla kupców… przestanie być. Ratusz zapewne zastanawia się czym zakon ślubujący ascezę usprawiedliwia gwałtowny wzrost swoich potrzeb finansowych.</p>
-<p>Na etapie w którym zadanie można zacząć Gracz był już kilkukrotnie w Velkar</p>
-<p>i wykonał tam inne zadania. Jest wstępnie zaznajomiony ze stronnictwem Paladynów</p>
-<p>i Ratusza. Widział jak każde z nich traktuje mieszkańców i poznał kilku przedstawicieli. Nie zna jednak głębszych motywacji żadnego ze stronnictw.</p>
-    </div>
-    <a class="toplink" href="#top">↑ Powrót na górę</a>
-  </section>
-
-  <div class="separator">✦ ❖ ✦</div>
-
-  <section id="streszczenie-questa">
-    <h2>Streszczenie Questa</h2>
-
-    <div class="panel" id="streszczenie-akt-1"><h3>✦ Akt I: Honor</h3><p>Gracz zostaje napadnięty przez rzezimieszków w Mieście. Choć poradziłby sobie</p>
-<p>z bandą oprychów, w sprawę miesza się dziwny mężczyzna który ogłusza ich krzycząc coś</p>
-<p>o honorze.</p>
-<p>Wdzięczność pcha do dialogu, ale mężczyzna ledwie jest w stanie wydusić z siebie słowo inne niż “honor”, więc postać Gracza żartobliwie nazywa go Honorem. Jest pobłażliwie traktowany przez innych mieszkańców - z faktycznym współczuciem i empatią. Wiadomo, że nie tak dawno temu było z nim nieco lepiej. Funkcjonował zupełnie normalnie, póki go nie okradziono. Po tym wydarzeniu nie dało się z nim porozmawiać o niczym innym, jak o utraconym honorze, który chciał odnaleźć.</p></div>
-<div class="panel" id="streszczenie-akt-2"><h3>✦ Akt II: Śledztwo</h3><p>Krótkie śledztwo skłania postać Gracza do myślenia, że Honor próbował odnaleźć posążek w kształcie głowy bez twarzy [Głowa Bezlicza]. Tropów brak, ale przestępstwo jest najpewniej powiązane z serią kradzieży z którymi boryka się Velkar. Gracz dopada jednego złodzieja, ale nie może wymierzyć mu sprawiedliwości - złodziej zasłania się immunitetem Ratusza.</p>
-<p>Jakkolwiek podejrzane by to nie było Gracz udaje się do Komisarza (odpowiadającego za bezpieczeństwo miasta). Bezceremonialnie przyznaje, że Ratusz nie ufa paladynom i próbuje przeciwdziałać ich kumulacji złota. We własne ręce biorą odpowiedzialność - wynajmują złodziei i rzezimieszków do rozkradania mienia paladynów. Mały procent zostaje dla złodziejów, większy procent wraca do miasta i pozwala zabezpieczyć jego byt. Dla niepoznaki oczywiście należy też czasem kraść pomniejsze rzeczy zwykłym mieszkańcom. Niemniej w kwestii posążka - Ratusz “zasadniczo ma go</p>
-<p>w dupie”. Pozwalają Graczowi go wziąć. Komisarz eskortuje Gracza do opuszczonej Kaplicy - tam trzymają skonfiskowane przedmioty. Po drodze Gracza gryzą szczury. Podejrzana jest ich agresja i brak strachu. Horrorowa sceneria, na posążku w ciemnym pomieszczeniu siedzi kruk i oświetla go niebieskie światło księżyca. Kruk dziobie posążek, a na jego dziobie jest krew, ewidentnie cieknąca z posążka. Widzi nas, wydaje przerażający dźwięk, przelatuje bardzo blisko twarzy Komisarza oraz Gracza i zaczyna się zmieniać. Transformuje się</p>
-<p>w Valravna - potwora z duńskiego folkloru, kruka który pije ludzką krew i zdobywa ludzką inteligencję. Walczymy wspólnie z potworem.</p>
-<p>Uchodzimy z życiem. Komisarz traktuje to jako dowód że paladyni knują coś “pojebanego” i niechybnie posążek ściąga szaleństwo.</p></div>
-<div class="panel" id="streszczenie-akt-3-1"><h3>✦ Akt III: Ścieżka 1</h3><p>Honor krótkoterminowo Gracz może zdecydować by oddać posążek Honorowi. Wówczas okaże się, że posążek wcale nie ściąga szaleństwa tylko je leczy. Honor chorował od dawna, jeszcze przed dołączeniem do zakonu. Złożył śluby milczenia i poprzysiągł bronić posążka co ostatecznie go wyleczyło. W ramach tego wyboru Honor zupełnie przestaje mówić. Pokutą za niedopełnienie przysięgi jest niemal całkowite ubóstwo i samookaleczanie się. Pozostały, acz niewielki majątek oddaje Graczowi.</p>
-<p>Velkar krótkoterminowo Paladyni wiedzieli, że za kradzieżami stoi Ratusz, ale czekali na lepszy pretekst do wzniecenia konfliktu. Świadectwo Honora (którego mieszkańcy znali i któremu współczuli) usprawiedliwia ścięcie Komisarza i zakontraktowanych złodziejów. Kradzieże w mieście ustępują, a konflikt między religią i polityką zaognia się.</p>
-<p>Honor długoterminowo Ostatecznym celem Zakonu Paladynów z Velkar jest wsparcie rewolucji w odległym Mieście Niewolników. Twist z posążkiem jest podwójny - okazuje się zarówno leczyć z szaleństwa (wchłania je), jak i przenieść je na kogoś innego. Honor jest pionkiem, który poświęca się dla sprawy i przekazuje posążek jako dar dla Władcy Niewolników. Tym samym popada w całkowity obłęd i umiera.</p>
-<p>Velkar długoterminowo Wybór 1 to jedno z zadań wspierające stronnictwo Paladynów. Odpowiednia ilość takich wyborów prowadzi do wyzwolenia Miasta Niewolników - posążek przekazany przez Honora apodyktycznemu władcy doprowadzi do chaosu umożliwiającego działanie. Po wygranej rewolucji część mieszkańców Velkar przeniesie się tam wraz z paladynami i będą spokojnie egzystować. Reszta mieszkańców - ofiary rewolucji - pochłonie głodowa, brutalna śmierć, a wraz z nimi upadnie Velkar. Pytanie tylko czy fanatyzm religijny, doktryna po trupach do celu i polityczne zapędy Zakonu nie doprowadzą w przyszłości do problemów także w nowych, idyllicznych realiach…</p></div>
-<div class="panel" id="streszczenie-akt-3-2"><h3>✦ Akt III: Ścieżka 2</h3><p>Honor krótkoterminowo Gracz może zdecydować o zostawieniu posążka pod komendą Komisarza. Honor pozostanie chory. Na przestrzeni czasu trafi na samo dno. Będzie żebrał, poza chorobą psychiczną rozwinie choroby cielesne i przestanie być zdolny do samodzielnej egzystencji.</p>
-<p>Velkar krótkoterminowo Problem kradzieży w Velkarze nie zostanie rozwiązany, strach o bezpieczeństwo będzie narastać. Mieszkańcy mocniej skierują się pod protektorat paladynów, ale otwarty konflikt Ratusza i Zakonu nie wybuchnie od razu, więc Gracz może pomyśleć, że jest to lepszy wybór.</p>
-<p>Honor długoterminowo Po jakimś czasie stan Honora poprawi się. Będzie można znaleźć go u wiedźmy Honoraty, która go przygarnęła. Pytanie tylko co wiedźma z tego czerpie i co Honor na tym traci? Tego Gracz się nie dowie. Opcja ta na pierwszy rzut oka jest dla Honora lepsza. Amnezja sprawi, że przestanie obsesyjnie poszukiwać honoru i będzie mógł rozmawiać o czymś innym. Choć będzie funkcjonował jak upośledzony intelektualnie, jego życie będzie normalne.</p>
-<p>Velkar długoterminowo W długiej perspektywie szaleństwo dotknie Komisarza,</p>
-<p>a konflikt między Ratuszem i paladynami zaogni się. Następca Komisarza w strachu przed podzieleniem jego losów wyzbędzie się skrupułów do jeszcze większego stopnia. Agenci Ratusza będą po cichu mordować lojalistów religijnych. Odpowiednia ilość wyborów wspierających Ratusz doprowadzi do ufundowania areligijnej straży miejskiej, rozkwitu prawa, publicznych egzekucji i rozbicia Zakonu Paladynów. Rewolucja w Mieście Niewolników nie dojdzie do skutku i mieszkańcy będą dalej dręczeni, ale porządek w Velkar zostanie przywrócony i miasto będzie dalej prosperować. Bez religijnej pieczy produktywność rzemieślników spadnie. Pytanie więc na jak długo byt Velkar zostanie utrzymany…</p></div>
-
-    <a class="toplink" href="#top">↑ Powrót na górę</a>
-  </section>
-
-  <div class="separator">⚔ ✦ ⚔</div>
-
-  <section id="konsekwencje">
-    <h2>Konsekwencje wyborów</h2>
-    <div class="panel">
-      <p>Ratusz jawi się jako ludzie bez skrupułów i moralności, a jego przedstawiciele są wyrachowani i mało przyjaźni.</p>
-<p>Zakon Paladynów z kolei wydaje się dbać o miejscową ludność, pozornie wszystko jest honorowe i w służbie bóstwom, a ich przedstawiciel jest bardzo charyzmatyczny.</p>
-<p>Wybór 1 i oddanie posążka Honorowi doprowadzi do jego wyleczenia, a zarazem do ciężkiej pokuty i cierpienia. Więcej się już nie odezwie, a później umrze oszalały</p>
-<p>w zagranicznej misji. Konflikt między stronnictwami w mieście wybuchnie natychmiast</p>
-<p>i zdestabilizuje Velkar. Późniejsze wsparcie Paladynów doprowadzi do wyzwolenia Miasta Niewolników i w miarę spokojnego życia, ale Velkar upadnie, a rewolucja pochłonie masę ofiar.</p>
-<p>Wybór 2 i pozostawienie posążka Komisarzowi doprowadzi do pogorszenia stanu Honora, przeistoczonego w chorego żebraka. Później jednak przygarnie go wiedźma,</p>
-<p>a Honor zacznie funkcjonować normalnie, choć z amnezją i upośledzeniem umysłowym. Konflikt w mieście zostanie odłożony w czasie. Późniejsze wsparcie Ratusza spowoduje upadek rewolucji w Mieście Niewolników i silniejsze prześladowania. Władza w Velkar przejdzie w świeckie ręce. Prawo będzie twarde, ale utrzyma sytuację w ryzach i Velkar będzie mogło dalej funkcjonować bez narażenia życia mieszkańców.</p>
-    </div>
-    <a class="toplink" href="#top">↑ Powrót na górę</a>
-  </section>
-
-  <div class="separator">✦ ❖ ✦</div>
-
-  <section id="prolog">
-    <h2>Prolog</h2>
-    <div class="panel">
-      <p>Gracz eksplorując Velkar (również w ramach głównej fabuły) jest świadkiem interakcji Honora z innymi mieszkańcami, w tle. Każde odwiedziny miasta triggerują jedną z tych sytuacji lub może to być uzależnione od progresu w grze:</p>
-<div class="dialogue-box">Environmental storytelling. Gracz może zacząć questa po doświadczeniu X interakcji, które można zrobić w kilku fazach (stopniowo uwidaczniających szaleństwo) W ramach zadania rekrutacyjnego proponuję 5 przykładowych interakcji.</div>
-<p>Interakcja 1 (z Rycerzem)</p>
-<p>Honor: Dzielny Wojowniku! Ofiaruję nagrodę! Muszę odszukać swój honor!</p>
-<p>Rycerz: Jak cię kopnę w dupę będziesz musiał znaleźć go dwa razy. Spieprzaj mi stąd.</p>
-<p>Interakcja 2 (z Goblinem, na targu)</p>
-<p>H: Poszukuję swojego honoru.</p>
-<p>G: Co to, to jest?</p>
-<p>H: Honor to coś co straciłem. Honor to coś co sprawia, że człowiek jest człowiekiem.</p>
-<p>G: Nie jesteś zbyt, zbyt bystry, co?</p>
-<p>Interakcja 3 (z Kurtyzanami)</p>
-<p>K1 *uwodzicielsko*: Długo się tu kręcisz nieznajomy. Moja koleżanka wpadła ci w oko czy może… ja odpowiadam ci bardziej?</p>
-<p>H: Tylko honor mi odpowiada. A ja odpowiadam honorowi.</p>
-<p>K1 *chichocząc*: Nie przejmuj się. Nikt ci nigdy nie powiedział, że honor jest stracony tylko gdy ktoś się o tym dowie?</p>
-<p>K2: A my nikomu nie powiemy.</p>
-<p>H: Stracony! Tak, mój honor jest stracony. Odnaleźć honor. MUSZĘ. Odnaleźć. Honor.</p>
-<p>K1: Sporo się go pogubiło w naszym przybytku. Może się rozejrzysz?</p>
-<p>K2: A może znajdziesz coś cenniejszego?</p>
-<p>H: Szukam tylko honoru.</p>
-<p>K2: Smutny jesteś. Gołodupcu.</p>
-<p>H: (odchodzi)</p>
-<div class="dialogue-box">*po chwili*</div>
-<p>K1: Mężczyźni są tacy nieostrożni. Połowa gubi honor dla pierwszej lepszej pizdy jak mają 13 wiosen, a druga połowa pędzi do pizdy tak szybko, że przychodzi na świat bez jego krztyny.</p>
-<p>K2: Z pizdą między nogami mogliby go chociaż sprzedać.</p>
-<p>K1: Ta? Ci bez honoru zostają królewiczami i innymi ważnymi. Ci co są pizdami chętnie się im sprzedają.</p>
-<p>K2: Bycie rżniętym przez króla jest mniej zabawne.</p>
-<p>K1: Ja wolałabym być rżnięta przez króla.</p>
-<p>K2: Bo jesteś dziwką.</p>
-<p>Interakcja 4 (z Pijakiem przy studni)</p>
-<p>H: Ejże! Szukam honoru!</p>
-<p>P: To h..*czka* ..ujowo trafiłeś.</p>
-<p>H: Pomóż mi odnaleźć honor, Panie. Na wszystko co święte…</p>
-<p>P: Nie drzyjże japy. Idź no do karczmy.</p>
-<p>H: W karczmie jest mój honor?</p>
-<p>P: Jest jabol i nic więcej ci nie trza.</p>
-<p>Interakcja 5 (przed Karczmą)</p>
-<p>Przed wejściem do Karczmy ktoś bije się Honorem na pięści. Zanim gracz podejdzie, Honor pada nieprzytomny.</p>
-<p>Napastnik *odchodząc*: Skurwysyn…</p>
-    </div>
-    <a class="toplink" href="#top">↑ Powrót na górę</a>
-  </section>
-
-  <div class="separator">⚔ ✦ ⚔</div>
-
-  <section id="scenariusz">
-    <h2>SCENARIUSZ</h2>
-
-    <div class="panel" id="scenariusz-akt-1"><h3>Akt I</h3><div class="script"><p>Wybór dialogowy (to co gracz klika) jest pogrubiony</p>
-<p>Gracz normalnie chodzi po mieście. Przyczepia się do niego 3 NPC którzy chwilkę podążają za Graczem, aż jeden zagrodzi mu drogę, co triggeruje cutscenę.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Miodny dzień, prawda?</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 2</span>Piękny.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Prawda Panie?</p>
-<p class="choice"><strong>Byłby, gdyby nie smród</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>*wzdycha* Nie widziałem jeszcze pięknego dnia w tej dziurze. Czyste niebo może faktycznie pomaga szarzyźnie. Ale smród jest tak wielki, że odczuwam go też oczami.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Wybaczcie Panie, wybaczcie. To Otis tak cuchnie. Historia jest dobra.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 2</span>Przednia.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Morda. Widzicie, jego matka była strasznie brzydka. Bardziej niż on sam.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 3</span>*Wzdycha*</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Ale była łasa na kasę. Chłop w życiu by jej nie dotknął, ale posag nie mógł się zmarnować. Raz, wieczorem, przysiadła nad potokiem. Wiesz po co?</p>
-<p class="choice"><strong>Zakładam że się dowiem</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Nie bawią mnie zgadywanki.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Całowała żaby żeby zmienić jakąś w księcia coby ją brał. Choć nieksięciu pewnie też byłby sukcesem.</p>
-<p class="choice"><strong>I co?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Do rzeczy.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Żaby nie znalazła, ale zrobiła sobie dobrze rybą i stąd oto mamy tu z nami Otisa śmierdziela.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Musiałaby przelecieć cały ocean żeby Otis śmierdział tak jak Velkar.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>A może to matka już śmierdziała i to dlatego ryby tak walą? Otis, jak to było?</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 3</span>*spluwa*</p>
+<div class="recruiter" id="do-rekruterow">
+<h2>Do rekruter&oacute;w</h2>
+<p>Szanowni Pa&#324;stwo,</p>
+<p>na Pa&#324;stwa ofert&#281; natrafi&#322;em na kilka godzin przed ko&#324;cem naboru. Sfinalizowanie zadania rekrutacyjnego na satysfakcjonuj&#261;cym mnie poziomie nie jest mo&#380;liwe. Niemniej, jestem bardzo zainteresowany ofert&#261; i&nbsp;my&#347;l&#281;, &#380;e posiadam umiej&#281;tno&#347;ci odpowiednie do wsparcia Waszego zespo&#322;u.</p>
+<p>Nie cieszy mnie oddanie pracy niekompletnej i&nbsp;nie prezentuje mnie z&nbsp;najlepszej strony, ale w&nbsp;zaistnia&#322;ej sytuacji to najlepsze co mog&#281; zrobi&#263;. Z&nbsp;Discorda dowiedzia&#322;em si&#281;, &#380;e wysy&#322;aj&#261; Pa&#324;stwo maile do aplikant&oacute;w. Je&#380;eli moja praca/moja osoba spotka si&#281; z&nbsp;zainteresowaniem - prosz&#281; o&nbsp;wiadomo&#347;&#263;. Z&nbsp;najwi&#281;ksz&#261; przyjemno&#347;ci&#261; prze&#347;l&#281; w&oacute;wczas stuprocentowo sko&#324;czone zadanie jeszcze przed kolejnym etapem rekrutacji.</p>
+<p>Wobec powy&#380;szego - dla efektywno&#347;ci czasowej - prezentuj&#281; wersj&#281; zadania tak jakby by&#322;a rozegrana w&nbsp;konkretnym wariancie. Zaznaczam gdzie wyb&oacute;r dialogowy by&#322;by mo&#380;liwy, ale prowadz&#281; narracj&#281; wytyczon&#261; &#347;cie&#380;k&#261;. Je&#380;eli faktycznie Pa&#324;stwo si&#281; ze mn&#261; skontaktuj&#261;, oczywi&#347;cie to rozbuduj&#281;.</p>
+<p>Mi&#322;ej lektury!</p>
+</div>
+<header>
+<h1 id="top">Dla Honora<br><span class="subtitle">[For Honor]</span>
+</h1>
+<div class="separator">&#9876; &#10022; &#9876;</div>
+</header>
+<nav aria-label="Spis tre&#347;ci" class="toc">
+<h2>Spis Tre&#347;ci</h2>
+<ul>
+<li><a href="#kontekst">I. Kontekst</a></li>
+<li><a href="#streszczenie-questa">II. Streszczenie Questa</a></li>
+<li><a href="#streszczenie-akt-1">&#10022; Akt I: Honor</a></li>
+<li><a href="#streszczenie-akt-2">&#10022; Akt II: &#346;ledztwo</a></li>
+<li><a href="#streszczenie-akt-3-1">&#10022; Akt III: &#346;cie&#380;ka 1</a></li>
+<li><a href="#streszczenie-akt-3-2">&#10022; Akt III: &#346;cie&#380;ka 2</a></li>
+<li><a href="#konsekwencje">III. Konsekwencje wybor&oacute;w</a></li>
+<li><a href="#scenariusz">SCENARIUSZ</a></li>
+<li><a href="#prolog">1. Prolog</a></li>
+<li><a href="#scenariusz-akt-1">2. Akt I</a></li>
+<li><a href="#scenariusz-akt-2">3. Akt II</a></li>
+</ul>
+</nav>
+<section id="kontekst">
+<h2>Kontekst</h2>
+<div class="panel">
+<p>Miasto Velkar znajduje si&#281; w&nbsp;beznadziejnym po&#322;o&#380;eniu. Plony nie wyrosn&#261; z&nbsp;wyja&#322;owionej ziemi, a&nbsp;ryby wy&#322;awiane z&nbsp;rzek s&#261; ma&#322;e jak szproty, a&nbsp;&#347;mierdz&#261;ce jak &#347;ledzie. Mieszka&#324;cy to jednak znakomici rzemie&#347;lnicy. Handel z&nbsp;zagranicznymi kupcami powstrzymuje ekonomiczn&#261; upad&#322;o&#347;&#263;. Zr&#281;czne r&#281;ce przynosz&#261; tu wi&#281;kszy presti&#380; ni&#380; w&#322;adza polityczna.</p>
+<p>Ile warta mo&#380;e by&#263; ci&#281;&#380;ka praca, kiedy nie jest ofiarowana b&oacute;stwom? Jedynym miejscem wartym ogl&#261;dania jest tu klasztor zarz&#261;dzany przez paladyn&oacute;w. Inaczej ni&#380; w&nbsp;innych rejonach &#347;wiata s&#261; tutaj lepszymi mnichami ni&#380; wojownikami. Niemniej, stanowi&#261; jedyn&#261; zbrojn&#261; jednostk&#281; miasta, co nakazuje si&#281; z&nbsp;nimi liczy&#263;. Co by nie m&oacute;wi&#263; s&#261; wzorem rycerskich cn&oacute;t i&nbsp;bezgranicznego oddania. Mniej b&oacute;stwom ni&#380; charyzmatycznemu liderowi duchowemu. M&oacute;dl si&#281; i&nbsp;pracuj - a&nbsp;przynajmniej jedno z&nbsp;nich, a&nbsp;na pewno nie nic innego. Tak mo&#380;na opisa&#263; tutejszy krajobraz. Inna dewiza: &#380;adna praca nie ha&#324;bi. Czy to &#380;e burdelami zarz&#261;dza &#347;wi&#281;tobliwy zakon naprawd&#281; stanowi jakikolwiek sekret? &ldquo;Lepiej grzeszy&#263; cia&#322;em ni&#380; bezrobociem&rdquo;.</p>
+<p>Radykalizacja religijna rodzi polityczne niesnaski. Maj&#261;tki przekazywane we w&#322;adanie zakonu i&nbsp;hojne ofiary szkodz&#261; op&#322;acalno&#347;ci handlu, nie m&oacute;wi&#261;c ju&#380; o&nbsp;spadku sprzeda&#380;y alkoholu i&nbsp;n&#281;kaj&#261;cej miasto fali kradzie&#380;y. Je&#347;li Velkar przestanie by&#263; atrakcyjne dla kupc&oacute;w&hellip; przestanie by&#263;. Ratusz zapewne zastanawia si&#281; czym zakon &#347;lubuj&#261;cy ascez&#281; usprawiedliwia gwa&#322;towny wzrost swoich potrzeb finansowych.</p>
+<p class="context-note">Na etapie w&nbsp;kt&oacute;rym zadanie mo&#380;na zacz&#261;&#263; Gracz by&#322; ju&#380; kilkukrotnie w&nbsp;Velkar i&nbsp;wykona&#322; tam inne zadania. Jest wst&#281;pnie zaznajomiony ze stronnictwem Paladyn&oacute;w i&nbsp;Ratusza. Widzia&#322; jak ka&#380;de z&nbsp;nich traktuje mieszka&#324;c&oacute;w i&nbsp;pozna&#322; kilku przedstawicieli. Nie zna jednak g&#322;&#281;bszych motywacji &#380;adnego ze stronnictw.</p>
+</div>
+<a class="toplink" href="#top">&uarr; Powr&oacute;t na g&oacute;r&#281;</a>
+</section>
+<div class="separator">&#10022; &#10070; &#10022;</div>
+<section id="streszczenie-questa">
+<h2>Streszczenie Questa</h2>
+<div class="panel" id="streszczenie-akt-1">
+<h3>&#10022; Akt I: Honor</h3>
+<p>Gracz zostaje napadni&#281;ty przez rzezimieszk&oacute;w w&nbsp;Mie&#347;cie. Cho&#263; poradzi&#322;by sobie z&nbsp;band&#261; oprych&oacute;w, w&nbsp;spraw&#281; miesza si&#281; dziwny m&#281;&#380;czyzna kt&oacute;ry og&#322;usza ich krzycz&#261;c co&#347; o&nbsp;honorze.</p>
+<p>Wdzi&#281;czno&#347;&#263; pcha do dialogu, ale m&#281;&#380;czyzna ledwie jest w&nbsp;stanie wydusi&#263; z&nbsp;siebie s&#322;owo inne ni&#380; &ldquo;honor&rdquo;, wi&#281;c posta&#263; Gracza &#380;artobliwie nazywa go Honorem. Jest pob&#322;a&#380;liwie traktowany przez innych mieszka&#324;c&oacute;w - z&nbsp;faktycznym wsp&oacute;&#322;czuciem i&nbsp;empati&#261;. Wiadomo, &#380;e nie tak dawno temu by&#322;o z&nbsp;nim nieco lepiej. Funkcjonowa&#322; zupe&#322;nie normalnie, p&oacute;ki go nie okradziono. Po tym wydarzeniu nie da&#322;o si&#281; z&nbsp;nim porozmawia&#263; o&nbsp;niczym innym, jak o&nbsp;utraconym honorze, kt&oacute;ry chcia&#322; odnale&#378;&#263;.</p>
+</div>
+<div class="panel" id="streszczenie-akt-2">
+<h3>&#10022; Akt II: &#346;ledztwo</h3>
+<p>Kr&oacute;tkie &#347;ledztwo sk&#322;ania posta&#263; Gracza do my&#347;lenia, &#380;e Honor pr&oacute;bowa&#322; odnale&#378;&#263; pos&#261;&#380;ek w&nbsp;kszta&#322;cie g&#322;owy bez twarzy <strong class="emph-white">[G&#322;owa Bezlicza]</strong>. Trop&oacute;w brak, ale przest&#281;pstwo jest najpewniej powi&#261;zane z&nbsp;seri&#261; kradzie&#380;y z&nbsp;kt&oacute;rymi boryka si&#281; Velkar. Gracz dopada jednego z&#322;odzieja, ale nie mo&#380;e wymierzy&#263; mu sprawiedliwo&#347;ci - z&#322;odziej zas&#322;ania si&#281; immunitetem Ratusza.</p>
+<p>Jakkolwiek podejrzane by to nie by&#322;o Gracz udaje si&#281; do Komisarza (odpowiadaj&#261;cego za bezpiecze&#324;stwo miasta). Bezceremonialnie przyznaje, &#380;e Ratusz nie ufa paladynom i&nbsp;pr&oacute;buje przeciwdzia&#322;a&#263; ich kumulacji z&#322;ota. We w&#322;asne r&#281;ce bior&#261; odpowiedzialno&#347;&#263; - wynajmuj&#261; z&#322;odziei i&nbsp;rzezimieszk&oacute;w do rozkradania mienia paladyn&oacute;w. Ma&#322;y procent zostaje dla z&#322;odziej&oacute;w, wi&#281;kszy procent wraca do miasta i&nbsp;pozwala zabezpieczy&#263; jego byt. Dla niepoznaki oczywi&#347;cie nale&#380;y te&#380; czasem kra&#347;&#263; pomniejsze rzeczy zwyk&#322;ym mieszka&#324;com. Niemniej w&nbsp;kwestii pos&#261;&#380;ka - Ratusz &bdquo;zasadniczo ma go w&nbsp;dupie&rdquo;. Pozwalaj&#261; Graczowi go wzi&#261;&#263;. Komisarz eskortuje Gracza do opuszczonej Kaplicy - tam trzymaj&#261; skonfiskowane przedmioty. Po drodze Gracza gryz&#261; szczury. Podejrzana jest ich agresja i&nbsp;brak strachu.</p>
+<p>Horrorowa sceneria, na pos&#261;&#380;ku w&nbsp;ciemnym pomieszczeniu siedzi kruk i&nbsp;o&#347;wietla go niebieskie &#347;wiat&#322;o ksi&#281;&#380;yca. Kruk dziobie pos&#261;&#380;ek, a&nbsp;na jego dziobie jest krew, ewidentnie ciekn&#261;ca z&nbsp;pos&#261;&#380;ka. Widzi nas, wydaje przera&#380;aj&#261;cy d&#378;wi&#281;k, przelatuje bardzo blisko twarzy Komisarza oraz Gracza i&nbsp;zaczyna si&#281; zmienia&#263;. Transformuje si&#281; w&nbsp;Valravna - potwora z&nbsp;du&#324;skiego folkloru, kruka kt&oacute;ry pije ludzk&#261; krew i&nbsp;zdobywa ludzk&#261; inteligencj&#281;. Walczymy wsp&oacute;lnie z&nbsp;potworem.</p>
+<p>Uchodzimy z&nbsp;&#380;yciem. Komisarz traktuje to jako dow&oacute;d &#380;e paladyni knuj&#261; co&#347; &bdquo;pojebanego&rdquo; i&nbsp;niechybnie pos&#261;&#380;ek &#347;ci&#261;ga szale&#324;stwo.</p>
+</div>
+<div class="panel" id="streszczenie-akt-3-1">
+<h3>&#10022; Akt III: &#346;cie&#380;ka 1</h3>
+<div class="act3-grid">
+<section class="act3-card">
+<h4>Honor kr&oacute;tkoterminowo</h4>
+<p>Gracz mo&#380;e zdecydowa&#263; by odda&#263; pos&#261;&#380;ek Honorowi. W&oacute;wczas oka&#380;e si&#281;, &#380;e pos&#261;&#380;ek wcale nie &#347;ci&#261;ga szale&#324;stwa tylko je leczy. Honor chorowa&#322; od dawna, jeszcze przed do&#322;&#261;czeniem do zakonu. Z&#322;o&#380;y&#322; &#347;luby milczenia i&nbsp;poprzysi&#261;g&#322; broni&#263; pos&#261;&#380;ka co ostatecznie go wyleczy&#322;o. W&nbsp;ramach tego wyboru Honor zupe&#322;nie przestaje m&oacute;wi&#263;. Pokut&#261; za niedope&#322;nienie przysi&#281;gi jest niemal ca&#322;kowite ub&oacute;stwo i&nbsp;samookaleczanie si&#281;. Pozosta&#322;y, acz niewielki maj&#261;tek oddaje Graczowi.</p>
+</section>
+<section class="act3-card">
+<h4>Velkar kr&oacute;tkoterminowo</h4>
+<p>Paladyni wiedzieli, &#380;e za kradzie&#380;ami stoi Ratusz, ale czekali na lepszy pretekst do wzniecenia konfliktu. &#346;wiadectwo Honora (kt&oacute;rego mieszka&#324;cy znali i&nbsp;kt&oacute;remu wsp&oacute;&#322;czuli) usprawiedliwia &#347;ci&#281;cie Komisarza i&nbsp;zakontraktowanych z&#322;odziej&oacute;w. Kradzie&#380;e w&nbsp;mie&#347;cie ust&#281;puj&#261;, a&nbsp;konflikt mi&#281;dzy religi&#261; i&nbsp;polityk&#261; zaognia si&#281;.</p>
+</section>
+<section class="act3-card">
+<h4>Honor d&#322;ugoterminowo</h4>
+<p>Ostatecznym celem Zakonu Paladyn&oacute;w z&nbsp;Velkar jest wsparcie rewolucji w&nbsp;odleg&#322;ym Mie&#347;cie Niewolnik&oacute;w. Twist z&nbsp;pos&#261;&#380;kiem jest podw&oacute;jny - okazuje si&#281; zar&oacute;wno leczy&#263; z&nbsp;szale&#324;stwa (wch&#322;ania je), jak i&nbsp;przenie&#347;&#263; je na kogo&#347; innego. Honor jest pionkiem, kt&oacute;ry po&#347;wi&#281;ca si&#281; dla sprawy i&nbsp;przekazuje pos&#261;&#380;ek jako dar dla W&#322;adcy Niewolnik&oacute;w. Tym samym popada w&nbsp;ca&#322;kowity ob&#322;&#281;d i&nbsp;umiera.</p>
+</section>
+<section class="act3-card">
+<h4>Velkar d&#322;ugoterminowo</h4>
+<p>Wyb&oacute;r 1 to jedno z&nbsp;zada&#324; wspieraj&#261;ce stronnictwo Paladyn&oacute;w. Odpowiednia ilo&#347;&#263; takich wybor&oacute;w prowadzi do wyzwolenia Miasta Niewolnik&oacute;w - pos&#261;&#380;ek przekazany przez Honora apodyktycznemu w&#322;adcy doprowadzi do chaosu umo&#380;liwiaj&#261;cego dzia&#322;anie. Po wygranej rewolucji cz&#281;&#347;&#263; mieszka&#324;c&oacute;w Velkar przeniesie si&#281; tam wraz z&nbsp;paladynami i&nbsp;b&#281;d&#261; spokojnie egzystowa&#263;. Reszta mieszka&#324;c&oacute;w - ofiary rewolucji - poch&#322;onie g&#322;odowa, brutalna &#347;mier&#263;, a&nbsp;wraz z&nbsp;nimi upadnie Velkar. Pytanie tylko czy fanatyzm religijny, doktryna po trupach do celu i&nbsp;polityczne zap&#281;dy Zakonu nie doprowadz&#261; w&nbsp;przysz&#322;o&#347;ci do problem&oacute;w tak&#380;e w&nbsp;nowych, idyllicznych realiach&hellip;</p>
+</section>
+</div>
+</div>
+<div class="panel" id="streszczenie-akt-3-2">
+<h3>&#10022; Akt III: &#346;cie&#380;ka 2</h3>
+<div class="act3-grid">
+<section class="act3-card">
+<h4>Honor kr&oacute;tkoterminowo</h4>
+<p>Gracz mo&#380;e zdecydowa&#263; o&nbsp;zostawieniu pos&#261;&#380;ka pod komend&#261; Komisarza. Honor pozostanie chory. Na przestrzeni czasu trafi na samo dno. B&#281;dzie &#380;ebra&#322;, poza chorob&#261; psychiczn&#261; rozwinie choroby cielesne i&nbsp;przestanie by&#263; zdolny do samodzielnej egzystencji.</p>
+</section>
+<section class="act3-card">
+<h4>Velkar kr&oacute;tkoterminowo</h4>
+<p>Problem kradzie&#380;y w&nbsp;Velkarze nie zostanie rozwi&#261;zany, strach o&nbsp;bezpiecze&#324;stwo b&#281;dzie narasta&#263;. Mieszka&#324;cy mocniej skieruj&#261; si&#281; pod protektorat paladyn&oacute;w, ale otwarty konflikt Ratusza i&nbsp;Zakonu nie wybuchnie od razu, wi&#281;c Gracz mo&#380;e pomy&#347;le&#263;, &#380;e jest to lepszy wyb&oacute;r.</p>
+</section>
+<section class="act3-card">
+<h4>Honor d&#322;ugoterminowo</h4>
+<p>Po jakim&#347; czasie stan Honora poprawi si&#281;. B&#281;dzie mo&#380;na znale&#378;&#263; go u&nbsp;wied&#378;my Honoraty, kt&oacute;ra go przygarn&#281;&#322;a. Pytanie tylko co wied&#378;ma z&nbsp;tego czerpie i&nbsp;co Honor na tym traci? Tego Gracz si&#281; nie dowie. Opcja ta na pierwszy rzut oka jest dla Honora lepsza. Amnezja sprawi, &#380;e przestanie obsesyjnie poszukiwa&#263; honoru i&nbsp;b&#281;dzie m&oacute;g&#322; rozmawia&#263; o&nbsp;czym&#347; innym. Cho&#263; b&#281;dzie funkcjonowa&#322; jak upo&#347;ledzony intelektualnie, jego &#380;ycie b&#281;dzie normalne.</p>
+</section>
+<section class="act3-card">
+<h4>Velkar d&#322;ugoterminowo</h4>
+<p>W&nbsp;d&#322;ugiej perspektywie szale&#324;stwo dotknie Komisarza, a&nbsp;konflikt mi&#281;dzy Ratuszem i&nbsp;paladynami zaogni si&#281;. Nast&#281;pca Komisarza w&nbsp;strachu przed podzieleniem jego los&oacute;w wyzb&#281;dzie si&#281; skrupu&#322;&oacute;w do jeszcze wi&#281;kszego stopnia. Agenci Ratusza b&#281;d&#261; po cichu mordowa&#263; lojalist&oacute;w religijnych. Odpowiednia ilo&#347;&#263; wybor&oacute;w wspieraj&#261;cych Ratusz doprowadzi do ufundowania areligijnej stra&#380;y miejskiej, rozkwitu prawa, publicznych egzekucji i&nbsp;rozbicia Zakonu Paladyn&oacute;w. Rewolucja w&nbsp;Mie&#347;cie Niewolnik&oacute;w nie dojdzie do skutku i&nbsp;mieszka&#324;cy b&#281;d&#261; dalej dr&#281;czeni, ale porz&#261;dek w&nbsp;Velkar zostanie przywr&oacute;cony i&nbsp;miasto b&#281;dzie dalej prosperowa&#263;. Bez religijnej pieczy produktywno&#347;&#263; rzemie&#347;lnik&oacute;w spadnie. Pytanie wi&#281;c na jak d&#322;ugo byt Velkar zostanie utrzymany&hellip;</p>
+</section>
+</div>
+</div>
+<a class="toplink" href="#top">&uarr; Powr&oacute;t na g&oacute;r&#281;</a>
+</section>
+<div class="separator">&#9876; &#10022; &#9876;</div>
+<section id="konsekwencje">
+<h2>Konsekwencje wybor&oacute;w</h2>
+<div class="panel">
+<p class="consequence-intro">Ratusz jawi si&#281; jako ludzie bez skrupu&#322;&oacute;w i&nbsp;moralno&#347;ci, a&nbsp;jego przedstawiciele s&#261; wyrachowani i&nbsp;ma&#322;o przyja&#378;ni.</p>
+<p class="consequence-intro">Zakon Paladyn&oacute;w z&nbsp;kolei wydaje si&#281; dba&#263; o&nbsp;miejscow&#261; ludno&#347;&#263;, pozornie wszystko jest honorowe i&nbsp;w&nbsp;s&#322;u&#380;bie b&oacute;stwom, a&nbsp;ich przedstawiciel jest bardzo charyzmatyczny.</p>
+<h3 class="consequence-heading">&#9670; Wyb&oacute;r 1: Oddanie pos&#261;&#380;ka Honorowi &#9670;</h3>
+<p>Wyb&oacute;r 1 i&nbsp;oddanie pos&#261;&#380;ka Honorowi doprowadzi do jego wyleczenia, a&nbsp;zarazem do ci&#281;&#380;kiej pokuty i&nbsp;cierpienia. Wi&#281;cej si&#281; ju&#380; nie odezwie, a&nbsp;p&oacute;&#378;niej umrze oszala&#322;y w&nbsp;zagranicznej misji. Konflikt mi&#281;dzy stronnictwami w&nbsp;mie&#347;cie wybuchnie natychmiast i&nbsp;zdestabilizuje Velkar. P&oacute;&#378;niejsze wsparcie Paladyn&oacute;w doprowadzi do wyzwolenia Miasta Niewolnik&oacute;w i&nbsp;w&nbsp;miar&#281; spokojnego &#380;ycia, ale Velkar upadnie, a&nbsp;rewolucja poch&#322;onie mas&#281; ofiar.</p>
+<h3 class="consequence-heading">&#9670; Wyb&oacute;r 2: Pozostawienie pos&#261;&#380;ka Komisarzowi &#9670;</h3>
+<p>Wyb&oacute;r 2 i&nbsp;pozostawienie pos&#261;&#380;ka Komisarzowi doprowadzi do pogorszenia stanu Honora, przeistoczonego w&nbsp;chorego &#380;ebraka. P&oacute;&#378;niej jednak przygarnie go wied&#378;ma, a&nbsp;Honor zacznie funkcjonowa&#263; normalnie, cho&#263; z&nbsp;amnezj&#261; i&nbsp;upo&#347;ledzeniem umys&#322;owym. Konflikt w&nbsp;mie&#347;cie zostanie od&#322;o&#380;ony w&nbsp;czasie. P&oacute;&#378;niejsze wsparcie Ratusza spowoduje upadek rewolucji w&nbsp;Mie&#347;cie Niewolnik&oacute;w i&nbsp;silniejsze prze&#347;ladowania. W&#322;adza w&nbsp;Velkar przejdzie w&nbsp;&#347;wieckie r&#281;ce. Prawo b&#281;dzie twarde, ale utrzyma sytuacj&#281; w&nbsp;ryzach i&nbsp;Velkar b&#281;dzie mog&#322;o dalej funkcjonowa&#263; bez nara&#380;enia &#380;ycia mieszka&#324;c&oacute;w.</p>
+</div>
+<a class="toplink" href="#top">&uarr; Powr&oacute;t na g&oacute;r&#281;</a>
+</section>
+<div class="separator">&#10022; &#10070; &#10022;</div>
+<section id="prolog">
+<h2>Prolog</h2>
+<div class="panel">
+<p class="prolog-intro">Gracz eksploruj&#261;c Velkar (r&oacute;wnie&#380; w&nbsp;ramach g&#322;&oacute;wnej fabu&#322;y) jest &#347;wiadkiem interakcji Honora z&nbsp;innymi mieszka&#324;cami, w&nbsp;tle. Ka&#380;de odwiedziny miasta triggeruj&#261; jedn&#261; z&nbsp;tych sytuacji lub mo&#380;e to by&#263; uzale&#380;nione od progresu w&nbsp;grze.</p>
+<div class="branch-note">Environmental storytelling. Gracz mo&#380;e zacz&#261;&#263; questa po do&#347;wiadczeniu X interakcji, kt&oacute;re mo&#380;na zrobi&#263; w&nbsp;kilku fazach (stopniowo uwidaczniaj&#261;cych szale&#324;stwo). W&nbsp;ramach zadania rekrutacyjnego proponuj&#281; 5 przyk&#322;adowych interakcji.</div>
+<div class="interaction-card">
+<h3 class="interaction-title">Interakcja 1 &middot; Z&nbsp;Rycerzem</h3>
+<div class="script">
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Dzielny Wojowniku! Ofiaruj&#281; nagrod&#281;! Musz&#281; odszuka&#263; sw&oacute;j honor!</p>
+<p class="dialogue"><span class="dialogue-speaker">Rycerz</span>Jak ci&#281; kopn&#281; w&nbsp;dup&#281; b&#281;dziesz musia&#322; znale&#378;&#263; go dwa razy. Spieprzaj mi st&#261;d.</p>
+</div>
+</div>
+<div class="interaction-card">
+<h3 class="interaction-title">Interakcja 2 &middot; Z&nbsp;Goblinem na targu</h3>
+<div class="script">
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Poszukuj&#281; swojego honoru.</p>
+<p class="dialogue"><span class="dialogue-speaker">Goblin</span>Co to, to jest?</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor to co&#347; co straci&#322;em. Honor to co&#347; co sprawia, &#380;e cz&#322;owiek jest cz&#322;owiekiem.</p>
+<p class="dialogue"><span class="dialogue-speaker">Goblin</span>Nie jeste&#347; zbyt, zbyt bystry, co?</p>
+</div>
+</div>
+<div class="interaction-card">
+<h3 class="interaction-title">Interakcja 3 &middot; Z&nbsp;Kurtyzanami</h3>
+<div class="script">
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span><em>*uwodzicielsko*</em> D&#322;ugo si&#281; tu kr&#281;cisz nieznajomy. Moja kole&#380;anka wpad&#322;a ci w&nbsp;oko czy mo&#380;e&hellip; ja odpowiadam ci bardziej?</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Tylko honor mi odpowiada. A&nbsp;ja odpowiadam honorowi.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span><em>*chichocz&#261;c*</em> Nie przejmuj si&#281;. Nikt ci nigdy nie powiedzia&#322;, &#380;e honor jest stracony tylko gdy kto&#347; si&#281; o&nbsp;tym dowie?</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>A&nbsp;my nikomu nie powiemy.</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Stracony! Tak, m&oacute;j honor jest stracony. Odnale&#378;&#263; honor. MUSZ&#280;. Odnale&#378;&#263;. Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span>Sporo si&#281; go pogubi&#322;o w&nbsp;naszym przybytku. Mo&#380;e si&#281; rozejrzysz?</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>A&nbsp;mo&#380;e znajdziesz co&#347; cenniejszego?</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Szukam tylko honoru.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>Smutny jeste&#347;. Go&#322;odupcu.</p>
+<p class="stage">Honor odchodzi.</p>
+<p class="stage">*po chwili*</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span>M&#281;&#380;czy&#378;ni s&#261; tacy nieostro&#380;ni. Po&#322;owa gubi honor dla pierwszej lepszej pizdy jak maj&#261; 13 wiosen, a&nbsp;druga po&#322;owa p&#281;dzi do pizdy tak szybko, &#380;e przychodzi na &#347;wiat bez jego krztyny.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>Z&nbsp;pizd&#261; mi&#281;dzy nogami mogliby go chocia&#380; sprzeda&#263;.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span>Ta? Ci bez honoru zostaj&#261; kr&oacute;lewiczami i&nbsp;innymi wa&#380;nymi. Ci co s&#261; pizdami ch&#281;tnie si&#281; im sprzedaj&#261;.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>Bycie r&#380;ni&#281;tym przez kr&oacute;la jest mniej zabawne.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 1</span>Ja wola&#322;abym by&#263; r&#380;ni&#281;ta przez kr&oacute;la.</p>
+<p class="dialogue"><span class="dialogue-speaker">Kurtyzana 2</span>Bo jeste&#347; dziwk&#261;.</p>
+</div>
+</div>
+<div class="interaction-card">
+<h3 class="interaction-title">Interakcja 4 &middot; Z&nbsp;Pijakiem przy studni</h3>
+<div class="script">
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Ej&#380;e! Szukam honoru!</p>
+<p class="dialogue"><span class="dialogue-speaker">Pijak</span>To h.. <em>*czkawka*</em> ..ujowo trafi&#322;e&#347;.</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>Pom&oacute;&#380; mi odnale&#378;&#263; honor, Panie. Na wszystko co &#347;wi&#281;te&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker">Pijak</span>Nie drzyj&#380;e japy. Id&#378; no do karczmy.</p>
+<p class="dialogue"><span class="dialogue-speaker">Honor</span>W&nbsp;karczmie jest m&oacute;j honor?</p>
+<p class="dialogue"><span class="dialogue-speaker">Pijak</span>Jest jabol i&nbsp;nic wi&#281;cej ci nie trza.</p>
+</div>
+</div>
+<div class="interaction-card">
+<h3 class="interaction-title">Interakcja 5 &middot; Przed karczm&#261;</h3>
+<div class="script">
+<p class="stage">Przed wej&#347;ciem do karczmy kto&#347; bije si&#281; z&nbsp;Honorem na pi&#281;&#347;ci. Zanim Gracz podejdzie, Honor pada nieprzytomny.</p>
+<p class="dialogue"><span class="dialogue-speaker">Napastnik</span><em>*odchodz&#261;c*</em> Skurwysyn&hellip;</p>
+</div>
+</div>
+</div>
+<a class="toplink" href="#top">&uarr; Powr&oacute;t na g&oacute;r&#281;</a>
+</section>
+<div class="separator">&#9876; &#10022; &#9876;</div>
+<section id="scenariusz">
+<h2>SCENARIUSZ</h2>
+<div class="panel" id="scenariusz-akt-1">
+<h3>Akt I</h3>
+<div class="script">
+<p class="choice choice-example"><strong>Wyb&oacute;r dialogowy (to co gracz mo&#380;e klikn&#261;&#263;) jest oznaczony w&nbsp;TAKI SPOS&Oacute;B</strong></p>
+<p>Gracz normalnie chodzi po mie&#347;cie. Przyczepia si&#281; do niego 3 NPC kt&oacute;rzy chwilk&#281; pod&#261;&#380;aj&#261; za Graczem, a&#380; jeden zagrodzi mu drog&#281;, co triggeruje cutscen&#281;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Miodny dzie&#324;, prawda?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #66d9ff;">Oprych 2</span>Pi&#281;kny.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Prawda Panie?</p>
+<p class="choice"><strong>By&#322;by, gdyby nie smr&oacute;d</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>*wzdycha* Nie widzia&#322;em jeszcze pi&#281;knego dnia w&nbsp;tej dziurze. Czyste niebo mo&#380;e faktycznie pomaga szarzy&#378;nie. Ale smr&oacute;d jest tak wielki, &#380;e odczuwam go te&#380; oczami.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Wybaczcie Panie, wybaczcie. To Otis tak cuchnie. Historia jest dobra.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #66d9ff;">Oprych 2</span>Przednia.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Morda. Widzicie, jego matka by&#322;a strasznie brzydka. Bardziej ni&#380; on sam.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">Oprych 3</span>*Wzdycha*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Ale by&#322;a &#322;asa na kas&#281;. Ch&#322;op w&nbsp;&#380;yciu by jej nie dotkn&#261;&#322;, ale posag nie m&oacute;g&#322; si&#281; zmarnowa&#263;. Raz, wieczorem, przysiad&#322;a nad potokiem. Wiesz po co?</p>
+<p class="choice"><strong>Zak&#322;adam &#380;e si&#281; dowiem</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Nie bawi&#261; mnie zgadywanki.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Ca&#322;owa&#322;a &#380;aby &#380;eby zmieni&#263; jak&#261;&#347; w&nbsp;ksi&#281;cia coby j&#261; bra&#322;. Cho&#263; nieksi&#281;ciu pewnie te&#380; by&#322;by sukcesem.</p>
+<p class="choice"><strong>I&nbsp;co?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Do rzeczy.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>&#379;aby nie znalaz&#322;a, ale zrobi&#322;a sobie dobrze ryb&#261; i&nbsp;st&#261;d oto mamy tu z&nbsp;nami Otisa &#347;mierdziela.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Musia&#322;aby przelecie&#263; ca&#322;y ocean &#380;eby Otis &#347;mierdzia&#322; tak jak Velkar.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>A&nbsp;mo&#380;e to matka ju&#380; &#347;mierdzia&#322;a i&nbsp;to dlatego ryby tak wal&#261;? Otis, jak to by&#322;o?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">Oprych 3</span>*spluwa*</p>
 <p class="choice"><strong>Co mnie to obchodzi?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Zakładam że nie mówisz mi tego żeby marnować mój czas?</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>*zmieniając ton* Idziecie do burdelu Panie?</p>
-<p class="choice"><strong>Nie twój interes gdzie idę</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Idę w swoją stronę. Umówmy się tak, podziękuję Wam za piękną historię, wy będziecie trzymać swoją broń schowaną. Później, a nawet wcześniej też pójdziecie w swoją stronę, albo zobaczymy czy trup zaśmierdzi bardziej niż Otis.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>*śmiejąc się* Na pewno mniej od jego matki. Spokojnie Panie. My jesteśmy biznesmeny. Otóż widzicie dla Otisa jest nadzieja. Jest lekarstwo.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Powiedziałem zjeżdżać.</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Idziecie zatem do burdelu. Ale dziwki mają standardy. Od ciebie? Nic nie wezmą. Otis za to ma standardy jeszcze mniejsze od matki. A usługi są nawet lepsze.</p>
-<p class="stage">*Oprych 2 zachodzi drogę.*</p>
-<p class="dialogue"><span class="dialogue-speaker">Oprych 1</span>Ty nam zapłacisz, a Otis cię nie wyrucha.</p>
-<p>[Dobądź miecza] 2. [Skumuluj manę]. Obie opcje prowadzą do tego samego rezultatu</p>
-<p>Zanim postać Gracza zaatakuje oprawców, zza pleców słyszy głośne HONOR!!!. Honor rzuca się Graczowi na pomoc i bardzo szybko rozprawia się z oprychami.</p>
-<p class="choice"><strong>Dzięki.</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Ktoś w Velkar faktycznie pomaga podróżnym? Miła niespodzianka. Co Cię do tego skłoniło?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="choice"><strong>Jesteś idiotą?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Czyli jesteś paladynem. Czy idiotą?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Ja Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mhm. Ja się zbieram.</p>
-<p>Honor siada na ziemi. Wygląda smutno. Jeszcze przed chwilą dzierżył miecz i utrzymywał prawidłową postawę w walce, ale teraz wygląda jak niemowlę które nie wie co ze sobą zrobić. Drasnął się w palec i ogląda ranę z zaciekawieniem.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>*wzdycha* Niech będzie. Przysługa za przysługę. Co mam z tobą zrobić?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mówisz czasem coś innego?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor. Honor. HONOR. Honor. Honorem. Honoru. Honory. Honorze. Hon-</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Stop, stop, przestań. Niech będzie. Bardzo zabawne. Masz jakieś imię?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Bogowie.. Niech będzie Honor. Rozumiesz w ogóle co mówię?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>No tak. Moja wina. Spytaj o miecz</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>To twoje? *wskazuje na miecz* Uważaj żeby się nie pociąć.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>*chwyta rękojeść i rzuca miecz na ziemię*</p>
-<p class="choice"><strong>Spytaj o oprychów</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Zabiłeś już kogoś wcześniej?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>*spuszcza wzrok*</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mm, chyba tak.</p>
-<p class="choice"><strong>Spytaj o honor</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Twoja pomoc była bardzo honorowa. Ale czy trzy śmierci są lepsze niż jedna? Co jeśli jeden z nich nawróciłby się i uratował świat? Co daje nam moralne prawo decydować o tym co jest sprawiedliwe?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor *wzdyma pierś. Z patosem*</span>Honor!</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Aha. Zapamiętam.</p>
-<p>[Opcja odblokowana po kilku pytaniach] Spytaj o opiekę</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Czyli mnie rozumiesz. Chyba. Gdzie twoja mama? Żona? Ktoś kto się tobą zajmuje?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Zak&#322;adam &#380;e nie m&oacute;wisz mi tego &#380;eby marnowa&#263; m&oacute;j czas?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>*zmieniaj&#261;c ton* Idziecie do burdelu Panie?</p>
+<p class="choice"><strong>Nie tw&oacute;j interes gdzie id&#281;</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Id&#281; w&nbsp;swoj&#261; stron&#281;. Um&oacute;wmy si&#281; tak, podzi&#281;kuj&#281; Wam za pi&#281;kn&#261; histori&#281;, wy b&#281;dziecie trzyma&#263; swoj&#261; bro&#324; schowan&#261;. P&oacute;&#378;niej, a&nbsp;nawet wcze&#347;niej te&#380; p&oacute;jdziecie w&nbsp;swoj&#261; stron&#281;, albo zobaczymy czy trup za&#347;mierdzi bardziej ni&#380; Otis.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>*&#347;miej&#261;c si&#281;* Na pewno mniej od jego matki. Spokojnie Panie. My jeste&#347;my biznesmeny. Ot&oacute;&#380; widzicie dla Otisa jest nadzieja. Jest lekarstwo.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Powiedzia&#322;em zje&#380;d&#380;a&#263;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Idziecie zatem do burdelu. Ale dziwki maj&#261; standardy. Od ciebie? Nic nie wezm&#261;. Otis za to ma standardy jeszcze mniejsze od matki. A&nbsp;us&#322;ugi s&#261; nawet lepsze.</p>
+<p class="stage">*Oprych 2 zachodzi drog&#281;.*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Ty nam zap&#322;acisz, a&nbsp;Otis ci&#281; nie wyrucha.</p>
+<p class="branch-note">[Dob&#261;d&#378; miecza] 2. [Skumuluj man&#281;]. Obie opcje prowadz&#261; do tego samego rezultatu</p>
+<p>Zanim posta&#263; Gracza zaatakuje oprawc&oacute;w, zza plec&oacute;w s&#322;yszy g&#322;o&#347;ne HONOR!!!. Honor rzuca si&#281; Graczowi na pomoc i&nbsp;bardzo szybko rozprawia si&#281; z&nbsp;oprychami.</p>
+<p class="choice"><strong>Dzi&#281;ki.</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Kto&#347; w&nbsp;Velkar faktycznie pomaga podr&oacute;&#380;nym? Mi&#322;a niespodzianka. Co Ci&#281; do tego sk&#322;oni&#322;o?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="choice"><strong>Jeste&#347; idiot&#261;?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Czyli jeste&#347; paladynem. Czy idiot&#261;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Ja Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mhm. Ja si&#281; zbieram.</p>
+<p>Honor siada na ziemi. Wygl&#261;da smutno. Jeszcze przed chwil&#261; dzier&#380;y&#322; miecz i&nbsp;utrzymywa&#322; prawid&#322;ow&#261; postaw&#281; w&nbsp;walce, ale teraz wygl&#261;da jak niemowl&#281; kt&oacute;re nie wie co ze sob&#261; zrobi&#263;. Drasn&#261;&#322; si&#281; w&nbsp;palec i&nbsp;ogl&#261;da ran&#281; z&nbsp;zaciekawieniem.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>*wzdycha* Niech b&#281;dzie. Przys&#322;uga za przys&#322;ug&#281;. Co mam z&nbsp;tob&#261; zrobi&#263;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>M&oacute;wisz czasem co&#347; innego?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor. Honor. HONOR. Honor. Honorem. Honoru. Honory. Honorze. Hon-</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Stop, stop, przesta&#324;. Niech b&#281;dzie. Bardzo zabawne. Masz jakie&#347; imi&#281;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Bogowie.. Niech b&#281;dzie Honor. Rozumiesz w&nbsp;og&oacute;le co m&oacute;wi&#281;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>No tak. Moja wina. Spytaj o&nbsp;miecz</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>To twoje? *wskazuje na miecz* Uwa&#380;aj &#380;eby si&#281; nie poci&#261;&#263;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>*chwyta r&#281;koje&#347;&#263; i&nbsp;rzuca miecz na ziemi&#281;*</p>
+<p class="choice"><strong>Spytaj o&nbsp;oprych&oacute;w</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Zabi&#322;e&#347; ju&#380; kogo&#347; wcze&#347;niej?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>*spuszcza wzrok*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mm, chyba tak.</p>
+<p class="choice"><strong>Spytaj o&nbsp;honor</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Twoja pomoc by&#322;a bardzo honorowa. Ale czy trzy &#347;mierci s&#261; lepsze ni&#380; jedna? Co je&#347;li jeden z&nbsp;nich nawr&oacute;ci&#322;by si&#281; i&nbsp;uratowa&#322; &#347;wiat? Co daje nam moralne prawo decydowa&#263; o&nbsp;tym co jest sprawiedliwe?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor *wzdyma pier&#347;. Z&nbsp;patosem*</span>Honor!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Aha. Zapami&#281;tam.</p>
+<p class="branch-note">[Opcja odblokowana po kilku pytaniach] Spytaj o&nbsp;opiek&#281;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Czyli mnie rozumiesz. Chyba. Gdzie twoja mama? &#379;ona? Kto&#347; kto si&#281; tob&#261; zajmuje?</p>
 <p class="stage">*Cisza*</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Co mam z tobą zrobić?</p>
-<p>Honor wstaje, podnosi miecz i wkłada do pochwy. Przechodzi do wyjścia z uliczki.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mam cię odprowadzić?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p>Gracz robi kilka kroków podążając za Honorem, ale wtedy mężczyzna odwraca się, podbiega do martwych ciał oprychów i zabiera im sakwy ze złotem. Postać Gracza patrzy. Potem Honor wraca przed Gracza i zaczyna prowadzić go dalej.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>To nie było bardzo honorowe.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>… Honor. Honor!</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Niech będzie, ty tu jesteś znawcą.</p>
-<p class="stage">[Eskortując Honora idziemy przez targ. Po drodze mamy kilka interakcji. W ramach zadania rekrutacyjnego proponuję 2]</p>
-<p class="dialogue"><span class="dialogue-speaker">Kupiec</span>Cuda, cuda z daleka! Cuda, cuda ogłaszam! Cuda, cuda z Riberii! Cielęcinka, jagnięcinka, pierścioneczki i dzwoneczki! Cudeńka najcudowniejsze! Kapusta, tekstylia, kołczany, do wyboru! Cuda, cuda do wyboru! Do wyboru…</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Do honoru!</p>
-<p class="dialogue"><span class="dialogue-speaker">Kupiec</span>TAK! Genialne, genialne, tak, tak! Do wyboru do honoru. Ha ha! Cuda z Riberii do wyboru do honoru! Dla Pana zniżka! Tylko u mnie cuda z Riberii do wyboru do honoru!</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Eh… Cudaki…</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor… aki?</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Przynosisz mi wstyd.</p>
-<p class="choice"><strong>Honor odchodzi i przyspiesza kroku</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Hej! Wolniej!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Co mam z&nbsp;tob&#261; zrobi&#263;?</p>
+<p>Honor wstaje, podnosi miecz i&nbsp;wk&#322;ada do pochwy. Przechodzi do wyj&#347;cia z&nbsp;uliczki.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mam ci&#281; odprowadzi&#263;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p>Gracz robi kilka krok&oacute;w pod&#261;&#380;aj&#261;c za Honorem, ale wtedy m&#281;&#380;czyzna odwraca si&#281;, podbiega do martwych cia&#322; oprych&oacute;w i&nbsp;zabiera im sakwy ze z&#322;otem. Posta&#263; Gracza patrzy. Potem Honor wraca przed Gracza i&nbsp;zaczyna prowadzi&#263; go dalej.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>To nie by&#322;o bardzo honorowe.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>&hellip; Honor. Honor!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Niech b&#281;dzie, ty tu jeste&#347; znawc&#261;.</p>
+<p class="stage">[Eskortuj&#261;c Honora idziemy przez targ. Po drodze mamy kilka interakcji. W&nbsp;ramach zadania rekrutacyjnego proponuj&#281; 2]</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">Kupiec</span>Cuda, cuda z&nbsp;daleka! Cuda, cuda og&#322;aszam! Cuda, cuda z&nbsp;Riberii! Ciel&#281;cinka, jagni&#281;cinka, pier&#347;cioneczki i&nbsp;dzwoneczki! Cude&#324;ka najcudowniejsze! Kapusta, tekstylia, ko&#322;czany, do wyboru! Cuda, cuda do wyboru! Do wyboru&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Do honoru!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">Kupiec</span>TAK! Genialne, genialne, tak, tak! Do wyboru do honoru. Ha ha! Cuda z&nbsp;Riberii do wyboru do honoru! Dla Pana zni&#380;ka! Tylko u&nbsp;mnie cuda z&nbsp;Riberii do wyboru do honoru!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Eh&hellip; Cudaki&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor&hellip; aki?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Przynosisz mi wstyd.</p>
+<p class="choice"><strong>Honor odchodzi i&nbsp;przyspiesza kroku</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Hej! Wolniej!</p>
 <p class="choice"><strong>Gracz idzie za nim</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Klient</span>…nie wymienisz na jedzenie. Potrzebujesz mojego barteru, więc jedna pią-</p>
-<p>Honor z dużą siła łapie klienta i dosuwa do straganu.</p>
-<p class="dialogue"><span class="dialogue-speaker">Klient</span>CO JEST?! Puszczaj! Czego?! Za co?!</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor *groźnie*</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Klient</span>Nie wiem czego-</p>
-<p>Honor pcha go na ziemię i chwyta za szyję</p>
-<p class="dialogue"><span class="dialogue-speaker">Klient</span>Dobra, dobra! Bogowie! Już. Zapłacę całość, nie targuję, już! JUŻ! Puść..że…</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fca5a5;">Klient</span>&hellip;nie wymienisz na jedzenie. Potrzebujesz mojego barteru, wi&#281;c jedna pi&#261;-</p>
+<p>Honor z&nbsp;du&#380;&#261; si&#322;a &#322;apie klienta i&nbsp;dosuwa do straganu.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fca5a5;">Klient</span>CO JEST?! Puszczaj! Czego?! Za co?!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor *gro&#378;nie*</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fca5a5;">Klient</span>Nie wiem czego-</p>
+<p>Honor pcha go na ziemi&#281; i&nbsp;chwyta za szyj&#281;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fca5a5;">Klient</span>Dobra, dobra! Bogowie! Ju&#380;. Zap&#322;ac&#281; ca&#322;o&#347;&#263;, nie targuj&#281;, ju&#380;! JU&#379;! Pu&#347;&#263;..&#380;e&hellip;</p>
 <p class="choice"><strong>Honor puszcza go</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Klient</span>Cholera jasna. Trzymaj go ode mnie z dala. Następnym razem przyślę wspólnika. (Odchodzi)</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Dzięki Panie. Na chwilę pomoże. Nie wszystkim, ale mi pomoże.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Co tu zaszło?</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>To skurwysyn.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Skurwysyn?</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Nie, tak naprawdę to nie. Rodzina, ale ta bardziej skurwysyńska.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Ale czego chciał?</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>No rację miał. Mówił mi dawno już, z sześć czy siedem temu…</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor?</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Honorowo mówił właśnie, ja mam tylko owce. Swetry szyję. I że swetrami nie wyżywię rodziny.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Człowieku, powiedz mi o co ta zwada?</p>
-<p>Od tego momentu jak gracz odejdzie. Wtedy kupiec krzyczy tylko “Dzięki wam!”</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>No przecież o to! Kupcy z daleka znad morza. Gdzie ryby też śmierdzą, ale mniej. I są większe. Tacy tu handlują i swetrów im nie trza. Swetrów trza naszym. I kuzyn mi właśnie żeby już nie szyć wtedy. I ja głupi nie posłuchał, a on teraz wielki panicz. Pochwy robi i pasy dla rycerstwa. Takie to się sprzeda, a swetry tylko naszym. Więc jak coś do gęby mam włożyć to muszę sweter na garnek, garnek na węgiel, węgiel na drzewo, drzewo na piwo, piwo na miód, a na wszystkim rżną Panie, tak rżną! Zanim miód na młotka, młotka na wazon, wazon na siodło, siodło na olej…</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mam wrażenie, że to nie może być aż tak skomplikowane.</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>No przesadzam przeca! Jakbym nie przesadzał to co bym robił? Ogrodniki i kupce przesadzają, bo jak kupiec nie przesadza to nie sprzeda, a jak nie sprzeda to nie kupi. Więc olej na mapy, mapy na…</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>A co ma do tego twój kuzyn?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor!</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Oj za grosz! Za grosz! Toć ci! Nie za zero groszy. Za grosz bo kupiec musi zarabiać. Każdy. Jak ja sweter na garnek to stratny jestem, jak ja garnek na węgiel to stratny, węgiel na drzewo to stratny, drzewo na piwo to stratny</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Tak, tak i jak olej na mapy też stratny. Co z tego?</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Jak olej na mapy stratny i jak mapy na zioła stratny i jak zioła na sól stratny i jak sól na miód stratny</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Miód już był.</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>A dziękuję. No więc stratny i to dużo. Więc mi kuzyn proponuje że zamiast miód na pasy, pochwy i pasy na chleb to on mi od razu sweter na pasy. I on to powymienia, a za fatygę już mi da procent odpowiedni. No mniejszy niż normalnie, ale się nie bujam. Zdzierca! Ale to jednak pomoc, więc grosz honoru ma.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor!</p>
-<p class="dialogue"><span class="dialogue-speaker">Sprzedawca</span>Tak. Dzięki Wam. Teraz pewno się dogadamy jakeś go nastraszył nieco. O! Sweter! Panie, dałbym chleba, ale jeszcze nie ma. Ale za czas jaki zimno będzie to weź sweter.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fca5a5;">Klient</span>Cholera jasna. Trzymaj go ode mnie z&nbsp;dala. Nast&#281;pnym razem przy&#347;l&#281; wsp&oacute;lnika. (Odchodzi)</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Dzi&#281;ki Panie. Na chwil&#281; pomo&#380;e. Nie wszystkim, ale mi pomo&#380;e.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Co tu zasz&#322;o?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>To skurwysyn.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Skurwysyn?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Nie, tak naprawd&#281; to nie. Rodzina, ale ta bardziej skurwysy&#324;ska.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Ale czego chcia&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>No racj&#281; mia&#322;. M&oacute;wi&#322; mi dawno ju&#380;, z&nbsp;sze&#347;&#263; czy siedem temu&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Honorowo m&oacute;wi&#322; w&#322;a&#347;nie, ja mam tylko owce. Swetry szyj&#281;. I&nbsp;&#380;e swetrami nie wy&#380;ywi&#281; rodziny.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Cz&#322;owieku, powiedz mi o&nbsp;co ta zwada?</p>
+<p>Od tego momentu jak gracz odejdzie. Wtedy kupiec krzyczy tylko &ldquo;Dzi&#281;ki wam!&rdquo;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>No przecie&#380; o&nbsp;to! Kupcy z&nbsp;daleka znad morza. Gdzie ryby te&#380; &#347;mierdz&#261;, ale mniej. I&nbsp;s&#261; wi&#281;ksze. Tacy tu handluj&#261; i&nbsp;swetr&oacute;w im nie trza. Swetr&oacute;w trza naszym. I&nbsp;kuzyn mi w&#322;a&#347;nie &#380;eby ju&#380; nie szy&#263; wtedy. I&nbsp;ja g&#322;upi nie pos&#322;ucha&#322;, a&nbsp;on teraz wielki panicz. Pochwy robi i&nbsp;pasy dla rycerstwa. Takie to si&#281; sprzeda, a&nbsp;swetry tylko naszym. Wi&#281;c jak co&#347; do g&#281;by mam w&#322;o&#380;y&#263; to musz&#281; sweter na garnek, garnek na w&#281;giel, w&#281;giel na drzewo, drzewo na piwo, piwo na mi&oacute;d, a&nbsp;na wszystkim r&#380;n&#261; Panie, tak r&#380;n&#261;! Zanim mi&oacute;d na m&#322;otka, m&#322;otka na wazon, wazon na siod&#322;o, siod&#322;o na olej&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mam wra&#380;enie, &#380;e to nie mo&#380;e by&#263; a&#380; tak skomplikowane.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>No przesadzam przeca! Jakbym nie przesadza&#322; to co bym robi&#322;? Ogrodniki i&nbsp;kupce przesadzaj&#261;, bo jak kupiec nie przesadza to nie sprzeda, a&nbsp;jak nie sprzeda to nie kupi. Wi&#281;c olej na mapy, mapy na&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>A&nbsp;co ma do tego tw&oacute;j kuzyn?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Oj za grosz! Za grosz! To&#263; ci! Nie za zero groszy. Za grosz bo kupiec musi zarabia&#263;. Ka&#380;dy. Jak ja sweter na garnek to stratny jestem, jak ja garnek na w&#281;giel to stratny, w&#281;giel na drzewo to stratny, drzewo na piwo to stratny</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Tak, tak i&nbsp;jak olej na mapy te&#380; stratny. Co z&nbsp;tego?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Jak olej na mapy stratny i&nbsp;jak mapy na zio&#322;a stratny i&nbsp;jak zio&#322;a na s&oacute;l stratny i&nbsp;jak s&oacute;l na mi&oacute;d stratny</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mi&oacute;d ju&#380; by&#322;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>A&nbsp;dzi&#281;kuj&#281;. No wi&#281;c stratny i&nbsp;to du&#380;o. Wi&#281;c mi kuzyn proponuje &#380;e zamiast mi&oacute;d na pasy, pochwy i&nbsp;pasy na chleb to on mi od razu sweter na pasy. I&nbsp;on to powymienia, a&nbsp;za fatyg&#281; ju&#380; mi da procent odpowiedni. No mniejszy ni&#380; normalnie, ale si&#281; nie bujam. Zdzierca! Ale to jednak pomoc, wi&#281;c grosz honoru ma.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #93c5fd;">Sprzedawca</span>Tak. Dzi&#281;ki Wam. Teraz pewno si&#281; dogadamy jake&#347; go nastraszy&#322; nieco. O! Sweter! Panie, da&#322;bym chleba, ale jeszcze nie ma. Ale za czas jaki zimno b&#281;dzie to we&#378; sweter.</p>
 <p class="choice"><strong>Podaje sweter Honorowi.</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor!</p>
-<p class="stage">Honor zaczyna prowadzić nas dalej. Kupiec krzyczy za nami “Dzięki wam!’ Honor podaje Graczowi sweter.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Dla mnie? Dzięki. (+1 pancerza, -1 szybkości. Śmieć na pamiątkę.)</p>
-<p class="choice"><strong>Jeśli Gracz odszedł wcześniej</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>No proszę, czyli jednak pomagasz wszystkim. A przez chwilę czułem się wyjątkowy.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor!</p>
-<p class="choice"><strong>Jeśli Gracz wysłuchał całej rozmowy</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>No proszę, możesz wcale nie być najgorszym rozmówcą w tym mieście.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor!</p>
+<p class="stage">Honor zaczyna prowadzi&#263; nas dalej. Kupiec krzyczy za nami &ldquo;Dzi&#281;ki wam!&rsquo; Honor podaje Graczowi sweter.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Dla mnie? Dzi&#281;ki. (+1 pancerza, -1 szybko&#347;ci. &#346;mie&#263; na pami&#261;tk&#281;.)</p>
+<p class="choice"><strong>Je&#347;li Gracz odszed&#322; wcze&#347;niej</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>No prosz&#281;, czyli jednak pomagasz wszystkim. A&nbsp;przez chwil&#281; czu&#322;em si&#281; wyj&#261;tkowy.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor!</p>
+<p class="choice"><strong>Je&#347;li Gracz wys&#322;ucha&#322; ca&#322;ej rozmowy</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>No prosz&#281;, mo&#380;esz wcale nie by&#263; najgorszym rozm&oacute;wc&#261; w&nbsp;tym mie&#347;cie.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor!</p>
 <p class="stage">[Honor prowadzi Gracza do karczmy]</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Nie mów mi że wlekę się za tobą żebyś się napił.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Milczy</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>No tak, przecież masz honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Więc? Czego chcesz?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Milczy</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mam ci coś zamówić za pomoc?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Tego się spodziewałem.</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka (od samego otwarcia drzwi)</span>Wrócił!</p>
-<p class="choice"><strong>Podbiega do Honora i przytula go.</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1 z grupy przy stole</span>PATRZTA!</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Martwiliśmy się, martwiliśmy kochanieńki! Panie, wyście go przyprowadzili? Chwała wam!</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Gówno a nie chwała, honor! Znaleźliście go!</p>
-<p class="dialogue"><span class="dialogue-speaker">Grupa</span>Śmieje się</p>
-<p class="choice"><strong>Czyli się znacie?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Pani… syn?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Jestem tak stara?!</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Nie chciałem-</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Jasne żeś nie chciał! No już, już. Żarty sobie stroję.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Nie wiedziałem co z nim zrobić, trochę się zmartwiłem jak prowadził mnie do karczmy. Jesteście dla siebie..?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Nikim. To jest po prostu, hm, jakby to..</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Nie m&oacute;w mi &#380;e wlek&#281; si&#281; za tob&#261; &#380;eby&#347; si&#281; napi&#322;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Milczy</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>No tak, przecie&#380; masz honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Wi&#281;c? Czego chcesz?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Milczy</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mam ci co&#347; zam&oacute;wi&#263; za pomoc?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Tego si&#281; spodziewa&#322;em.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka (od samego otwarcia drzwi)</span>Wr&oacute;ci&#322;!</p>
+<p class="choice"><strong>Podbiega do Honora i&nbsp;przytula go.</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #34d399;">M&#281;&#380;czyzna 1 z&nbsp;grupy przy stole</span>PATRZTA!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Martwili&#347;my si&#281;, martwili&#347;my kochanie&#324;ki! Panie, wy&#347;cie go przyprowadzili? Chwa&#322;a wam!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>G&oacute;wno a&nbsp;nie chwa&#322;a, honor! Znale&#378;li&#347;cie go!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #66d9ff;">Grupa</span>&#346;mieje si&#281;</p>
+<p class="choice"><strong>Czyli si&#281; znacie?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Pani&hellip; syn?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Jestem tak stara?!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Nie chcia&#322;em-</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Jasne &#380;e&#347; nie chcia&#322;! No ju&#380;, ju&#380;. &#379;arty sobie stroj&#281;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Nie wiedzia&#322;em co z&nbsp;nim zrobi&#263;, troch&#281; si&#281; zmartwi&#322;em jak prowadzi&#322; mnie do karczmy. Jeste&#347;cie dla siebie..?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Nikim. To jest po prostu, hm, jakby to..</p>
 <p class="choice"><strong>Honor?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Ten ż a r t szybko się nudzi. A się go nasłuchałam. Po prostu Pan ten, my go w zasadzie nie znamy, choć wołamy na niego Honor.</p>
-<p class="choice"><strong>Coś podobnego</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Jak na to wpadliście?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Widzę, że humor się cię trzyma. Dogadasz się z chłopcami. Nie stójmy tak w progu, chodź!</p>
-<p>Karczmarka prowadzi pod ladę, gdzie Gracz siada. Honor idzie do stołu z grupą mężczyzn.</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>No, no więc Honor to sąsiad. Miejscowy. Mało znany. Nikomu nigdy nie wadził, wiedzieliśmy że jest taki i tyle.</p>
-<p class="choice"><strong>Więc co się stało?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Jakiś czas temu już… Nie tak dawno, on chyba zwariował leciuteńko.</p>
-<p class="choice"><strong>Leciuteńko?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Z początku. Teraz bardziej, ale jeszcze przed kwartałem jakby Pan go zobaczył no to rozmowa może nie była najciekawsza, tak? Ale była i składał zdania ładne, pełne. Dało się dogadać. Trochę wokół, trochę na migi, ale dało. Teraz no… da się z nim zrozumieć, choć dogadać już mniej.</p>
-<p class="stage">Kamera najeżdża na stół z mężczyznami</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 4</span>Uwaga bo zagadkę zadaję. Co to jest czego nie ma jego mość Lutr?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>…</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>…</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor?</p>
-<p class="dialogue"><span class="dialogue-speaker">Grupa mężczyzn</span>Śmiech</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 4</span>I widzicie Pany?! Uczony człowiek! *Śmiech*</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Tera ja! Honor, co to jest: Zaczyna się na H i przez to mam ochotę na dziewki?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>CHUĆ! *śmieje się*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Ten &#380; a&nbsp;r t szybko si&#281; nudzi. A&nbsp;si&#281; go nas&#322;ucha&#322;am. Po prostu Pan ten, my go w&nbsp;zasadzie nie znamy, cho&#263; wo&#322;amy na niego Honor.</p>
+<p class="choice"><strong>Co&#347; podobnego</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Jak na to wpadli&#347;cie?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Widz&#281;, &#380;e humor si&#281; ci&#281; trzyma. Dogadasz si&#281; z&nbsp;ch&#322;opcami. Nie st&oacute;jmy tak w&nbsp;progu, chod&#378;!</p>
+<p>Karczmarka prowadzi pod lad&#281;, gdzie Gracz siada. Honor idzie do sto&#322;u z&nbsp;grup&#261; m&#281;&#380;czyzn.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>No, no wi&#281;c Honor to s&#261;siad. Miejscowy. Ma&#322;o znany. Nikomu nigdy nie wadzi&#322;, wiedzieli&#347;my &#380;e jest taki i&nbsp;tyle.</p>
+<p class="choice"><strong>Wi&#281;c co si&#281; sta&#322;o?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Jaki&#347; czas temu ju&#380;&hellip; Nie tak dawno, on chyba zwariowa&#322; leciute&#324;ko.</p>
+<p class="choice"><strong>Leciute&#324;ko?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Z&nbsp;pocz&#261;tku. Teraz bardziej, ale jeszcze przed kwarta&#322;em jakby Pan go zobaczy&#322; no to rozmowa mo&#380;e nie by&#322;a najciekawsza, tak? Ale by&#322;a i&nbsp;sk&#322;ada&#322; zdania &#322;adne, pe&#322;ne. Da&#322;o si&#281; dogada&#263;. Troch&#281; wok&oacute;&#322;, troch&#281; na migi, ale da&#322;o. Teraz no&hellip; da si&#281; z&nbsp;nim zrozumie&#263;, cho&#263; dogada&#263; ju&#380; mniej.</p>
+<p class="stage">Kamera naje&#380;d&#380;a na st&oacute;&#322; z&nbsp;m&#281;&#380;czyznami</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">M&#281;&#380;czyzna 4</span>Uwaga bo zagadk&#281; zadaj&#281;. Co to jest czego nie ma jego mo&#347;&#263; Lutr?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Grupa m&#281;&#380;czyzn</span>&#346;miech</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">M&#281;&#380;czyzna 4</span>I&nbsp;widzicie Pany?! Uczony cz&#322;owiek! *&#346;miech*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Tera ja! Honor, co to jest: Zaczyna si&#281; na H i&nbsp;przez to mam ochot&#281; na dziewki?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>CHU&#262;! *&#347;mieje si&#281;*</p>
 <p class="choice"><strong>Reszta milczy.</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Co jest?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Debil jesteś. Honor, piwo z sokiem czy…</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Co jest?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Debil jeste&#347;. Honor, piwo z&nbsp;sokiem czy&hellip;</p>
 <p class="stage">Kamera wraca na Gracza</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Widzę, że Honor ma przyjaciół?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Ano, chłopcy się cieszą jego towarzystwem. A jak więcej wypiją to się cieszą bardzo. Ale nie od zawsze. Honor jak z początku tu trafił to jeden urwis mu tak przyfasolił, że chyba wtedy mu się pogorszyło.</p>
-<p class="choice"><strong>Za co oberwał?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>No irytował, irytował. Wituś nasz się przechwalał tutaj jak często różnymi swoimi ekscesami. I jak tu Honor przylazł, a wcześniej my go nie widzieli to pierwsze co siup do Witka i go pyta o honor. Witek mu o babach i wojsku, a ten pyta gdzie jest honor po raz dziesiąty to się Witek wkurzył, wyzwał na pojedynek. Honor, no…</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Powiedział coś o honorze?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Tak i chyba Witek wkurzony go zabrał na zewnątrz i jak nie huknie! Chociaż między nami to chyba Honor nie rozumiał już wtedy, bo jest wielki i silny, a Witek… no nie jest.</p>
-<p class="choice"><strong>Wróćmy do rzeczy</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mówiłaś, że dało się z nim dogadać?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Tak. Zaczął łazić po mieście i wszędzie rozgadywać, że honor stracił. No współczuli my mu, ale co tu zrobić jak chłop dorosły. I prosił by mu pomóc znaleźć honor, czasem się niektórzy zgadzali, choć chyba nic nie znaleźli. I tak ciągle i ciągle aż gadał mniej i mniej, a teraz tylko jedno słowo, może z rzadka drugie. Biedny.</p>
-<p class="choice"><strong>Opiekujecie się nim?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>On tu trochę mieszka, ale jak to w karczmie mieszkać? Szczególnie że ma przecież swój dom. Chyba się tu dobrze czuje to co mu zabraniać będziemy? Czasem chłopcy go czymś poczęstują, czasem mi jakieś resztki zostaną. No to niech siedzi. Trochę się już wszyscy przyzwyczaili. Mieszkańcy przynajmniej. Czasem ktoś szuka zwady z przyjezdnych jak się wkurzy, ale to mu albo ktoś wyjaśni, a jak nie to Honor sobie radzi.</p>
-<p class="choice"><strong>Jak to się stało że się zgubił?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Jak to się stało że się zgubił?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>No, my się nim zajmujemy jak mówię trochę, ale przecież to ni dzieciak ni kundel. Robi co chce i się nie przejmujemy. On to tak po prawdzie nami się też opiekuje. Tu coś upoluje to upichcenia, tu monety przyniesie. Przejęlimy się zarazu jak pieniądz przyniósł bo Samor gada skąd debil taki to wziął? Ale rozmówili się chłopcy z Zakonem i nie pokradł ani nic.</p>
-<p>Honor okradł oprychów 2. [Nie zdradzaj co widziałeś]</p>
-<p class="stage">[Nie zdradzaj co widziałeś]</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>No i tyle. Dzięki jeszcze raz żeście go znaleźli go znikł już teraz na długo. Chłopcy szukali, pytali, ale ni widu ni słychu-kukuryku. My tu pomartwieni ale niepotrzebnie jak widać. Smutne to, smutne bardzo.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Tak w zasadzie.. Co mu jest?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Szaleństwo. Wariactwo. Straszne rzeczy, ale nieszkodliwe. Raz chłopcy z targu jakiegoś medyka zza granicy ściągnęli to go obejrzał.</p>
-<p class="choice"><strong>Co powiedział?</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>I jaka diagnoza?</p>
-<p class="dialogue"><span class="dialogue-speaker">Karczmarka</span>Ja się nie znam na tym. To chłopców wypytać musisz.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Dzięki.</p>
-<p>Gracz podchodzi do stolika. Mężczyźni grają w karty.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Trójki masz?</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 4</span>Blefuje!</p>
-<p>Wszyscy się śmieją za wyjątkiem mężczyzny 3</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>A ty czego się nie śmiejesz?!</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Bo debil jestem.</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honorowo!</p>
-<p class="choice"><strong>Wszyscy rechoczą</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Panowie.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Żadni Panowie. Witek jestem. I reszta.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Miło mi. Słyszałem, że jakiś lekarz oglądał naszego znajomego?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Ano. Wiesz co stwierdził?</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Mmm?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Że mu brak honoru! Ha, ha, ha!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Widz&#281;, &#380;e Honor ma przyjaci&oacute;&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Ano, ch&#322;opcy si&#281; ciesz&#261; jego towarzystwem. A&nbsp;jak wi&#281;cej wypij&#261; to si&#281; ciesz&#261; bardzo. Ale nie od zawsze. Honor jak z&nbsp;pocz&#261;tku tu trafi&#322; to jeden urwis mu tak przyfasoli&#322;, &#380;e chyba wtedy mu si&#281; pogorszy&#322;o.</p>
+<p class="choice"><strong>Za co oberwa&#322;?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>No irytowa&#322;, irytowa&#322;. Witu&#347; nasz si&#281; przechwala&#322; tutaj jak cz&#281;sto r&oacute;&#380;nymi swoimi ekscesami. I&nbsp;jak tu Honor przylaz&#322;, a&nbsp;wcze&#347;niej my go nie widzieli to pierwsze co siup do Witka i&nbsp;go pyta o&nbsp;honor. Witek mu o&nbsp;babach i&nbsp;wojsku, a&nbsp;ten pyta gdzie jest honor po raz dziesi&#261;ty to si&#281; Witek wkurzy&#322;, wyzwa&#322; na pojedynek. Honor, no&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Powiedzia&#322; co&#347; o&nbsp;honorze?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Tak i&nbsp;chyba Witek wkurzony go zabra&#322; na zewn&#261;trz i&nbsp;jak nie huknie! Chocia&#380; mi&#281;dzy nami to chyba Honor nie rozumia&#322; ju&#380; wtedy, bo jest wielki i&nbsp;silny, a&nbsp;Witek&hellip; no nie jest.</p>
+<p class="choice"><strong>Wr&oacute;&#263;my do rzeczy</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>M&oacute;wi&#322;a&#347;, &#380;e da&#322;o si&#281; z&nbsp;nim dogada&#263;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Tak. Zacz&#261;&#322; &#322;azi&#263; po mie&#347;cie i&nbsp;wsz&#281;dzie rozgadywa&#263;, &#380;e honor straci&#322;. No wsp&oacute;&#322;czuli my mu, ale co tu zrobi&#263; jak ch&#322;op doros&#322;y. I&nbsp;prosi&#322; by mu pom&oacute;c znale&#378;&#263; honor, czasem si&#281; niekt&oacute;rzy zgadzali, cho&#263; chyba nic nie znale&#378;li. I&nbsp;tak ci&#261;gle i&nbsp;ci&#261;gle a&#380; gada&#322; mniej i&nbsp;mniej, a&nbsp;teraz tylko jedno s&#322;owo, mo&#380;e z&nbsp;rzadka drugie. Biedny.</p>
+<p class="choice"><strong>Opiekujecie si&#281; nim?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>On tu troch&#281; mieszka, ale jak to w&nbsp;karczmie mieszka&#263;? Szczeg&oacute;lnie &#380;e ma przecie&#380; sw&oacute;j dom. Chyba si&#281; tu dobrze czuje to co mu zabrania&#263; b&#281;dziemy? Czasem ch&#322;opcy go czym&#347; pocz&#281;stuj&#261;, czasem mi jakie&#347; resztki zostan&#261;. No to niech siedzi. Troch&#281; si&#281; ju&#380; wszyscy przyzwyczaili. Mieszka&#324;cy przynajmniej. Czasem kto&#347; szuka zwady z&nbsp;przyjezdnych jak si&#281; wkurzy, ale to mu albo kto&#347; wyja&#347;ni, a&nbsp;jak nie to Honor sobie radzi.</p>
+<p class="choice"><strong>Jak to si&#281; sta&#322;o &#380;e si&#281; zgubi&#322;?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Jak to si&#281; sta&#322;o &#380;e si&#281; zgubi&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>No, my si&#281; nim zajmujemy jak m&oacute;wi&#281; troch&#281;, ale przecie&#380; to ni dzieciak ni kundel. Robi co chce i&nbsp;si&#281; nie przejmujemy. On to tak po prawdzie nami si&#281; te&#380; opiekuje. Tu co&#347; upoluje to upichcenia, tu monety przyniesie. Przej&#281;limy si&#281; zarazu jak pieni&#261;dz przyni&oacute;s&#322; bo Samor gada sk&#261;d debil taki to wzi&#261;&#322;? Ale rozm&oacute;wili si&#281; ch&#322;opcy z&nbsp;Zakonem i&nbsp;nie pokrad&#322; ani nic.</p>
+<p>Honor okrad&#322; oprych&oacute;w 2. [Nie zdradzaj co widzia&#322;e&#347;]</p>
+<p class="stage">[Nie zdradzaj co widzia&#322;e&#347;]</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>No i&nbsp;tyle. Dzi&#281;ki jeszcze raz &#380;e&#347;cie go znale&#378;li go znik&#322; ju&#380; teraz na d&#322;ugo. Ch&#322;opcy szukali, pytali, ale ni widu ni s&#322;ychu-kukuryku. My tu pomartwieni ale niepotrzebnie jak wida&#263;. Smutne to, smutne bardzo.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Tak w&nbsp;zasadzie.. Co mu jest?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Szale&#324;stwo. Wariactwo. Straszne rzeczy, ale nieszkodliwe. Raz ch&#322;opcy z&nbsp;targu jakiego&#347; medyka zza granicy &#347;ci&#261;gn&#281;li to go obejrza&#322;.</p>
+<p class="choice"><strong>Co powiedzia&#322;?</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>I&nbsp;jaka diagnoza?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #fcd34d;">Karczmarka</span>Ja si&#281; nie znam na tym. To ch&#322;opc&oacute;w wypyta&#263; musisz.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Dzi&#281;ki.</p>
+<p>Gracz podchodzi do stolika. M&#281;&#380;czy&#378;ni graj&#261; w&nbsp;karty.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Tr&oacute;jki masz?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">M&#281;&#380;czyzna 4</span>Blefuje!</p>
+<p>Wszyscy si&#281; &#347;miej&#261; za wyj&#261;tkiem m&#281;&#380;czyzny 3</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>A&nbsp;ty czego si&#281; nie &#347;miejesz?!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Bo debil jestem.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honorowo!</p>
+<p class="choice"><strong>Wszyscy rechocz&#261;</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Panowie.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>&#379;adni Panowie. Witek jestem. I&nbsp;reszta.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mi&#322;o mi. S&#322;ysza&#322;em, &#380;e jaki&#347; lekarz ogl&#261;da&#322; naszego znajomego?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Ano. Wiesz co stwierdzi&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Mmm?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>&#379;e mu brak honoru! Ha, ha, ha!</p>
 <p class="choice"><strong>Cisza</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>A spierdalajcie.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>A&nbsp;spierdalajcie.</p>
 <p class="choice"><strong>Dobre</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz *szorstko*</span>Dobre.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Ty też spierdalaj.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Przywlokłem raz jednego mądrale. Pono niezły. Obejrzał, posłuchał, postukał, odlał się i w końcu przemówił. Co on tam gadał?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 4</span>Że coś mu ze stopami jest</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>No, gada że coś mu ze stopami jest i…</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Że stopizacje ma. Łba.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Stopizacje?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Że ciągle ino o tym samym i samym.</p>
-<p class="choice"><strong>Przecież widzę.</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>To ci dopiero odkrycie.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Tak teżeżem pomyślał! Taki mądrala i nam gada co widzimy. Coś tam poporadzał i tyle. No i że mu przejdzie albo nie przejdzie i żeby go traktować dobrze.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Czyli nic wam nie powiedział.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>No że to tylko wariactwo. Nic poważnego.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>A coś o tym skąd się wzięło?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>A to nie. Ale po co jak my wiemy skąd się wzięło.</p>
-<p class="choice"><strong>Aż się boję</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Umieram z ciekawości.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>No go okradli. Wszystko mu wzięli. Grosz każdy.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Złodziejskie nasienie *spluwa*</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Panoszy się to tera wszędzie. Strach babę w domu zostawić bo też zabierą.</p>
-<p class="choice"><strong>A jednak jej nie pilnujesz</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>To czemu pijesz piwo zamiast jej pilnować?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>PANIE! Co jak pierwiej piwo pokradną?!</p>
-<p class="choice"><strong>Wszyscy się śmieją</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>W każdym razie kto by nie zwariował. Całe życie pieprzysz i potem</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 3</span>Zapieprzasz.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Może i ty nie pieprzysz…</p>
-<p class="choice"><strong>Śmiech</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>I zabierają rach-ciach i nie ma. Koniec. Niejednego by to położyło.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz *szorstko*</span>Dobre.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Ty te&#380; spierdalaj.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Przywlok&#322;em raz jednego m&#261;drale. Pono niez&#322;y. Obejrza&#322;, pos&#322;ucha&#322;, postuka&#322;, odla&#322; si&#281; i&nbsp;w&nbsp;ko&#324;cu przem&oacute;wi&#322;. Co on tam gada&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">M&#281;&#380;czyzna 4</span>&#379;e co&#347; mu ze stopami jest</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>No, gada &#380;e co&#347; mu ze stopami jest i&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>&#379;e stopizacje ma. &#321;ba.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Stopizacje?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>&#379;e ci&#261;gle ino o&nbsp;tym samym i&nbsp;samym.</p>
+<p class="choice"><strong>Przecie&#380; widz&#281;.</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>To ci dopiero odkrycie.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Tak te&#380;e&#380;em pomy&#347;la&#322;! Taki m&#261;drala i&nbsp;nam gada co widzimy. Co&#347; tam poporadza&#322; i&nbsp;tyle. No i&nbsp;&#380;e mu przejdzie albo nie przejdzie i&nbsp;&#380;eby go traktowa&#263; dobrze.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Czyli nic wam nie powiedzia&#322;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>No &#380;e to tylko wariactwo. Nic powa&#380;nego.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>A&nbsp;co&#347; o&nbsp;tym sk&#261;d si&#281; wzi&#281;&#322;o?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>A&nbsp;to nie. Ale po co jak my wiemy sk&#261;d si&#281; wzi&#281;&#322;o.</p>
+<p class="choice"><strong>A&#380; si&#281; boj&#281;</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Umieram z&nbsp;ciekawo&#347;ci.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>No go okradli. Wszystko mu wzi&#281;li. Grosz ka&#380;dy.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Z&#322;odziejskie nasienie *spluwa*</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>Panoszy si&#281; to tera wsz&#281;dzie. Strach bab&#281; w&nbsp;domu zostawi&#263; bo te&#380; zabier&#261;.</p>
+<p class="choice"><strong>A&nbsp;jednak jej nie pilnujesz</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>To czemu pijesz piwo zamiast jej pilnowa&#263;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>PANIE! Co jak pierwiej piwo pokradn&#261;?!</p>
+<p class="choice"><strong>Wszyscy si&#281; &#347;miej&#261;</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>W&nbsp;ka&#380;dym razie kto by nie zwariowa&#322;. Ca&#322;e &#380;ycie pieprzysz i&nbsp;potem</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #a78bfa;">M&#281;&#380;czyzna 3</span>Zapieprzasz.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>Mo&#380;e i&nbsp;ty nie pieprzysz&hellip;</p>
+<p class="choice"><strong>&#346;miech</strong></p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>I&nbsp;zabieraj&#261; rach-ciach i&nbsp;nie ma. Koniec. Niejednego by to po&#322;o&#380;y&#322;o.</p>
 <p class="choice"><strong>Lekarstwo</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Da się mu jakoś pomóc?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>Pewnie jak mu oddasz co ukradli. Chodził, gadał, pytał, każdemu do znudzenia że mu zabrali honor. Na kolanach nam Witusia prosił żeby mu pomógł go odnaleźć, aż się żal robiło. Kurwy złodziejskie, szumowiny pewnie te same się na niego zasadziły co na resztę całą. Dorwiesz ich to pewnie wszystko odzyskasz to ci jeszcze Lutr nagrodę jaką da.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 4</span>Dziwne że Zakon ich jeszcze nie dorwał.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>Zakon gówno zrobi. Co chwilę jakiegoś łapią i puszczają i łapią puszczają. To my się Pany musimy *czka* zasadzić i jak im wszystkim kopa w dupę zasadzę…</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Dzięki. Wiecie gdzie mieszkał?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>NIE PRZERYWAJ BO TOBIE TEŻ KOPA ZASADZĘ!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Da si&#281; mu jako&#347; pom&oacute;c?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>Pewnie jak mu oddasz co ukradli. Chodzi&#322;, gada&#322;, pyta&#322;, ka&#380;demu do znudzenia &#380;e mu zabrali honor. Na kolanach nam Witusia prosi&#322; &#380;eby mu pom&oacute;g&#322; go odnale&#378;&#263;, a&#380; si&#281; &#380;al robi&#322;o. Kurwy z&#322;odziejskie, szumowiny pewnie te same si&#281; na niego zasadzi&#322;y co na reszt&#281; ca&#322;&#261;. Dorwiesz ich to pewnie wszystko odzyskasz to ci jeszcze Lutr nagrod&#281; jak&#261; da.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">M&#281;&#380;czyzna 4</span>Dziwne &#380;e Zakon ich jeszcze nie dorwa&#322;.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>Zakon g&oacute;wno zrobi. Co chwil&#281; jakiego&#347; &#322;api&#261; i&nbsp;puszczaj&#261; i&nbsp;&#322;api&#261; puszczaj&#261;. To my si&#281; Pany musimy *czka* zasadzi&#263; i&nbsp;jak im wszystkim kopa w&nbsp;dup&#281; zasadz&#281;&hellip;</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Dzi&#281;ki. Wiecie gdzie mieszka&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>NIE PRZERYWAJ BO TOBIE TE&#379; KOPA ZASADZ&#280;!</p>
 <p class="choice"><strong>Zignoruj</strong></p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Czy czegoś konkretnego szukał?</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 1</span>A to połaź po ludziach popytaj. Honor tu każdego nękał to go każdy pokojarzy. Mnie to ryba.</p>
-<p class="dialogue"><span class="dialogue-speaker">Gracz</span>Dzięki.</p>
-<p>Gracz odchodzi i wychodzi. Kamera zostaje przy stole.</p>
-<p class="dialogue"><span class="dialogue-speaker">Mężczyzna 2</span>No! *czka* Tchórz! Czmychaj! HONOR! Patrzej tutaj! Zaczynamy leczenie. Pi-wo! Powiedz! Pi-wo! Co to jest piwo?!</p>
-<p class="dialogue"><span class="dialogue-speaker">Honor</span>Honor?</p>
-<p class="choice"><strong>Wszyscy się śmieją.</strong></p></div></div>
-<div class="panel" id="scenariusz-akt-2"><h3>Akt II</h3><div class="script"><p class="choice"><strong>Ciąg dalszy nastąpi</strong></p></div></div>
-
-    <a class="toplink" href="#top">↑ Powrót na górę</a>
-  </section>
-
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Czy czego&#347; konkretnego szuka&#322;?</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #06d6a0;">M&#281;&#380;czyzna 1</span>A&nbsp;to po&#322;a&#378; po ludziach popytaj. Honor tu ka&#380;dego n&#281;ka&#322; to go ka&#380;dy pokojarzy. Mnie to ryba.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ffd166;">Gracz</span>Dzi&#281;ki.</p>
+<p>Gracz odchodzi i&nbsp;wychodzi. Kamera zostaje przy stole.</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">M&#281;&#380;czyzna 2</span>No! *czka* Tch&oacute;rz! Czmychaj! HONOR! Patrzej tutaj! Zaczynamy leczenie. Pi-wo! Powiedz! Pi-wo! Co to jest piwo?!</p>
+<p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #ff6b6b;">Honor</span>Honor?</p>
+<p class="choice"><strong>Wszyscy si&#281; &#347;miej&#261;.</strong></p>
+</div>
+</div>
+<div class="panel" id="scenariusz-akt-2">
+<h3>Akt II</h3>
+<div class="script"><p class="choice choice-continuation"><strong>Ci&#261;g dalszy nast&#261;pi</strong></p></div>
+</div>
+<a class="toplink" href="#top">&uarr; Powr&oacute;t na g&oacute;r&#281;</a>
+</section>
 </body>
 </html>
