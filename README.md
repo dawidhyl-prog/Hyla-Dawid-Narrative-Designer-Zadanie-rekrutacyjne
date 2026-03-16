@@ -15,7 +15,7 @@ Dawid Hyla
 
 Szanowni Państwo,
 
-na Państwa ofertę natrafiłem na kilka godzin przed końcem naboru. Sfinalizowanie zadania rekrutacyjnego na satysfakcjonującym mnie poziomie nie jest możliwe. W zaistniałej sytuacji najlepsze co mogłem zrobić to doprowadzenie narracji tam gdzie zmierzała i przekazanie Państwu tyle treści, ile się uda.
+na Państwa ofertę natrafiłem na kilka godzin przed końcem naboru. Sfinalizowanie zadania rekrutacyjnego nie jest w takim czasie możliwe. W zaistniałej sytuacji najlepsze co mogłem zrobić to doprowadzenie narracji tam gdzie zmierzała i przekazanie Państwu tyle treści, ile się uda.
 
 Z Discorda dowiedziałem się, że wysyłają Państwo maile do aplikantów. Jeżeli moja praca/moja osoba spotka się z zainteresowaniem - proszę o wiadomość. Z największą przyjemnością prześlę wówczas dokończone zadanie przed kolejnym etapem rekrutacji.
 
