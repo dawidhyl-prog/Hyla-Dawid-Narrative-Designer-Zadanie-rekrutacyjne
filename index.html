@@ -781,6 +781,22 @@ Cutscene: Honor joins combat</pre></div>
 <p class="choice choice-example"><strong>Wybór dialogowy (to co gracz może kliknąć) jest oznaczony w TAKI SPOSÓB</strong></p>
 <p>Gracz normalnie chodzi po mieście. Przyczepia się do niego 3 NPC którzy chwilkę podążają za Graczem, aż jeden zagrodzi mu drogę, co triggeruje cutscenę.</p>
 <p>Jeżeli gracz zaatakuje opryszków przed końcem dialogu: dobędą noży, w Honor pojawi się wcześniej i będzie asystował w walce.</p>
+<div class="tech-grid">
+<div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Condition:
+Player attacks Thugs before dialogue ends
+
+Event:
+Interrupt Dialogue
+Set: QUEST_STATE = COMBAT_STARTED_EARLY
+
+Result:
+Thugs:
+- Equip: Knife
+- AI State → Combat
+
+Honor:
+- Spawn: Immediate
+- Behavior: Assist Player (Combat Ally)</pre></div>
 <p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Miodny dzień, prawda?</p>
 <p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #66d9ff;">Oprych 2</span>Piękny.</p>
 <p class="dialogue"><span class="dialogue-speaker" style="--speaker-color: #c95cff;">Oprych 1</span>Prawda Panie?</p>
