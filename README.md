@@ -8,8 +8,8 @@ Dawid Hyla
 ## Zawartość repozytorium
 - Zadanie rekrutacyjne w formacie HTML (plik index.html). Jeżeli nie zawiodłem technicznie, to link przesłany Państwu w formularzu generuje stronę automatycznie.
 - CV w formacie PDF
-- Załączniki do CV (certyfikaty, referencje) w formacie PDF
 - Portfolio w formacie PDF
+- Załączniki do CV (certyfikaty, dyplom ukończenia studiów, referencje) zawierają dane, których nie chcę udostępniać w publicznym rezpoytorium. Udostępnię je na życzenie.
 
 ## Nota dla rekruterów
 
