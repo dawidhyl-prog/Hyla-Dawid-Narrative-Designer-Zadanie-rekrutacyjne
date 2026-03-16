@@ -544,7 +544,9 @@
 <section id="streszczenie-questa">
 <h2>Streszczenie Questa</h2>
 <div class="tech-column">
-<div class="tech-block"><span class="tech-block-title">[TECH] Quest Flow</span><pre>STATE_0: PASSIVE (Encounters Active in Velkar)
+<div class="tech-block"><span class="tech-block-title">[TECH] Quest Flow</span><pre>
+Start Condition: Triggered by Encounter System (AMBUSH)
+STATE_0: PASSIVE (Encounters Active in Velkar)
 STATE_1: AMBUSH (Meet Honor)
 STATE_2: TAVERN (Escort Honor. Investigation starts.)
 STATE_3: INVESTIGATION
@@ -669,26 +671,39 @@ Late: Authoritarian Order</pre></div>
 <p class="prolog-intro">Gracz eksplorując Velkar (również w ramach głównej fabuły) jest świadkiem interakcji Honora z innymi mieszkańcami, w tle. Każde odwiedziny miasta triggerują jedną z tych sytuacji lub może to być uzależnione od progresu w grze.</p>
 <div class="branch-note">Environmental storytelling. Gracz może zacząć questa po doświadczeniu X interakcji, które można zrobić w kilku fazach (stopniowo uwidaczniających szaleństwo). W ramach zadania rekrutacyjnego proponuję 5 przykładowych interakcji.</div>
 <div class="tech-column">
-<div class="tech-block"><span class="tech-block-title">[TECH] Encounter Progression</span><pre>Variable: HonorEncounterCount
-Variable: HonorEncounterPhase
+<div class="tech-block"><span class="tech-block-title">[TECH] Encounter System</span><pre>Variables:
+- HonorEncounterCount
+- HonorEncounterPhase
+- PhaseEncounterCount
 
-Phase 1:
-- Unlock: Start
-- Encounters: 2
+Init:
+HonorEncounterPhase = 1
 
-Phase 2:
-- Unlock: STORY_PROGRESS_1
-- Encounters: +2
+Phases:
+1–3:
+- Encounters Required: 2
+- Pool: Encounters_Phase_X
 
-Phase 3:
-- Unlock: STORY_PROGRESS_2
-- Encounters: +2
+On Encounter Spawn:
+- Random (from current Phase Pool)
+- No repetition
+- Location: Velkar
 
-Trigger Condition:
+On Encounter Complete:
+- HonorEncounterCount += 1
+- PhaseEncounterCount += 1
+
+On Phase Complete:
+If PhaseEncounterCount ≥ 2:
+→ HonorEncounterPhase += 1
+→ PhaseEncounterCount = 0
+
+Trigger:
 HonorEncounterCount ≥ 6
+AND HonorEncounterPhase = 4
 AND Player in Velkar
 
-→ Start Quest (Ambush Event)</pre></div>
+→ Start Quest (Ambush)</pre></div>
 </div>
 <div class="interaction-card">
 <h3 class="interaction-title">Interakcja 1 · Z Rycerzem</h3>
@@ -755,7 +770,7 @@ AND Player in Velkar
 <div class="panel" id="scenariusz-akt-1">
 <h3>Akt I</h3>
 <div class="tech-grid">
-<div class="tech-block"><span class="tech-block-title">[TECH] Trigger</span><pre>Event: Ambush (3 Thugs)
+<div class="tech-block"><span class="tech-block-title">[TECH] Trigger</span><pre>Event: Start Encounter (Ambush - 3 Thugs)
 Cutscene: Honor joins combat</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] State Update</span><pre>Set: QUEST_STATE = MEET_HONOR</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Objective</span><pre>Escort Honor to Tavern</pre></div>
@@ -1045,7 +1060,7 @@ Set: FACTION_CONFLICT_KNOWN = TRUE</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Location Unlock</span><pre>Area: Abandoned Chapel
 Access: With Commissioner</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Encounter</span><pre>Enemy: Rats (Aggressive, Fearless)</pre></div>
-<div class="tech-block"><span class="tech-block-title">[TECH] Cutscene Trigger</span><pre>Condition: Player approaches Idol</pre></div>
+<div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Condition: Player approaches Idol Event: Raven → Valravn (Cutscene) Result: Start Boss Fight</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Raven → Valravn
 Start Boss Fight</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Item Acquisition</span><pre>Player obtains: Faceless Idol
