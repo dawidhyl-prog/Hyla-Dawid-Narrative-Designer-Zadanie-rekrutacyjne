@@ -6,9 +6,9 @@ Pliki udostępnione w ramach rekrutacji na stanowisko Narrative Designera do pro
 Dawid Hyla
 
 ## Zawartość repozytorium
-- Zadanie rekrutacyjne w formacie HTML
+- Zadanie rekrutacyjne w formacie HTML (plik index.html). Jeżeli nie zawiodłem technicznie, to link przesłany Państwu w formularzu generuje stronę automatycznie.
 - CV w formacie PDF
-- Załączniki do CV (certyfikaty, referencje)
+- Załączniki do CV (certyfikaty, referencje) w formacie PDF
 - Portfolio w formacie PDF
 
 ## Nota dla rekruterów
