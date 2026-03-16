@@ -679,15 +679,17 @@ Late: Authoritarian Order</pre></div>
 Init:
 HonorEncounterPhase = 1
 
-Phases:
-1–3:
+Phases (1–3):
 - Encounters Required: 2
 - Pool: Encounters_Phase_X
+
+On Enter Location:
+Condition: Player enters Velkar
+Event: Spawn Encounter
 
 On Encounter Spawn:
 - Random (from current Phase Pool)
 - No repetition
-- Location: Velkar
 
 On Encounter Complete:
 - HonorEncounterCount += 1
@@ -1053,17 +1055,15 @@ Cutscene: Honor joins combat</pre></div>
 - Identify Stolen Item</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Quest Item</span><pre>Target: Faceless Idol
 Set: ITEM_TARGET_IDENTIFIED = TRUE</pre></div>
-<div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Cutscene: Confront Thief
-Outcome: Immunity Reveal (No Combat)</pre></div>
+<div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Event: Play Cutscene (Confront Thief)
+Result: Target Immune (No Combat)</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Info Unlock</span><pre>Reveal: Council controls thieves
 Set: FACTION_CONFLICT_KNOWN = TRUE</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Location Unlock</span><pre>Area: Abandoned Chapel
 Access: With Commissioner</pre></div>
-<div class="tech-block"><span class="tech-block-title">[TECH] Encounter</span><pre>Enemy: Rats (Aggressive, Fearless)</pre></div>
+<div class="tech-block"><span class="tech-block-title">[TECH] Encounter</span><pre>Enemy: Rats Traits: Aggressive, Fearless</pre></div>
 <div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Condition: Player approaches Idol Event: Raven → Valravn (Cutscene) Result: Start Boss Fight</pre></div>
-<div class="tech-block"><span class="tech-block-title">[TECH] Event</span><pre>Raven → Valravn
-Start Boss Fight</pre></div>
-<div class="tech-block"><span class="tech-block-title">[TECH] Item Acquisition</span><pre>Player obtains: Faceless Idol
+<div class="tech-block"><span class="tech-block-title">[TECH] Result</span><pre>Add Item: Faceless Idol
 Set: QUEST_STATE = IDOL_OBTAINED</pre></div>
 </div>
 <div class="script"><p class="choice choice-continuation"><strong>Ciąg dalszy nastąpi</strong></p></div>
